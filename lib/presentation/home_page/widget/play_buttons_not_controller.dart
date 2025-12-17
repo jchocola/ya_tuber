@@ -8,28 +8,33 @@ import 'package:ya_tuber/presentation/home_page/widget/playlist_widget.dart';
 import 'package:ya_tuber/presentation/home_page/widget/volume_widget.dart';
 import 'package:ya_tuber/widget/custom_circle_button.dart';
 import 'package:ya_tuber/widget/custom_neumo_slider.dart';
+import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
-class PlayButtons extends StatelessWidget {
-  const PlayButtons({super.key});
+class PlayButtons_when_not_controller extends StatelessWidget {
+  const PlayButtons_when_not_controller({super.key});
 
   @override
   Widget build(BuildContext context) {
     final homePageProvider_read = context.read<HomePageProvider>();
+    final homePageProvider_listen = context.watch<HomePageProvider>();
     return Column(
       spacing: AppConstant.widgetPadding,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            CustomCircleButton(onPressed: () {
-               homePageProvider_read.playVideo();
-            }, icon: AppIcon.skipBackdIcon),
             CustomCircleButton(
               onPressed: () {
-                homePageProvider_read.pauseVideo();
+                homePageProvider_read.playVideo();
               },
-              icon: AppIcon.pauseIcon,
+              icon: AppIcon.skipBackdIcon,
             ),
+
+            ///
+            /// PLAY / PAUSE BUTTON
+            ///
+            CustomCircleButton(onPressed: () {}, icon: AppIcon.playIcon),
+
             CustomCircleButton(onPressed: () {}, icon: AppIcon.skipForwardIcon),
           ],
         ),
@@ -37,7 +42,7 @@ class PlayButtons extends StatelessWidget {
         CustomNeumoSlider(),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [Text('2:34'), Text('10:34')],
+          children: [Text('2:34rr'), Text('10:34')],
         ),
 
         Row(

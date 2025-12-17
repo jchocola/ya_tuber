@@ -3,7 +3,7 @@ import 'package:ya_tuber/domain/repo/youtube_explode_repo.dart';
 import 'package:ya_tuber/main.dart';
 import 'package:youtube_explode_dart/youtube_explode_dart.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart'
-    show YoutubePlayerController;
+    show YoutubePlayerController, YoutubePlayerParams;
 
 class HomePageProvider extends ChangeNotifier {
   final YoutubeExplodeRepo youtubeExplodeRepo;
@@ -14,23 +14,35 @@ class HomePageProvider extends ChangeNotifier {
   String? _currentVideoUrl = '';
   String? _currentVideoAudioUrl;
   Video? video;
-  YoutubePlayerController? _youtubePlayerController;
+  YoutubePlayerController? _youtubePlayerController = YoutubePlayerController(
+    params: YoutubePlayerParams(
+      mute: false,
+      showControls: true,
+      showFullscreenButton: true,
+      origin: 'https://www.youtube-nocookie.com',
+    ),
+  );
+  bool isMute = true;
+  int currentVolume = 0;
 
   YoutubePlayerController? get youtubePlayerController =>
       _youtubePlayerController;
 
-  void setCurrentVideoUrl(String? value) {
-    _currentVideoUrl = value;
-    logger.i('CurrentUrl : $value');
-    notifyListeners();
-  }
-
   ///
   /// PUBLIC METHODS
   ///
+  void setCurrentVideoUrl(String? value) {
+    _currentVideoUrl = value;
+    logger.i('CurrentUrl : $value');
+    // notifyListeners();
+  }
 
   Future<void> loadVideoInfo() async {
     try {
+      // ⛔ закрываем старый
+     // await _closeYoutubePlayerController();
+
+     
       // if current video url is empty
       if (_currentVideoUrl == null || _currentVideoUrl!.isEmpty) {
         throw Exception('URL EMPTY');
@@ -51,6 +63,11 @@ class HomePageProvider extends ChangeNotifier {
 
       // load youtube player
       await _loadYoutubePlayerController();
+
+      // check mute
+      isMute = false;
+      currentVolume = 70;
+      // await _checkMute();
 
       notifyListeners();
     } catch (e) {
@@ -76,7 +93,38 @@ class HomePageProvider extends ChangeNotifier {
     }
   }
 
-  
+  Future<void> setMute() async {
+    try {
+      await _youtubePlayerController?.mute();
+      await _checkMute();
+      logger.i('SetMute $isMute');
+      notifyListeners();
+    } catch (e) {
+      logger.e(e);
+    }
+  }
+
+  Future<void> unMute() async {
+    try {
+      await _youtubePlayerController?.unMute();
+      await _checkMute();
+      logger.i('Unmute $isMute');
+      notifyListeners();
+    } catch (e) {
+      logger.e(e);
+    }
+  }
+
+  Future<void> changeVolumeValue({required int volume}) async {
+    try {
+      await _youtubePlayerController?.setVolume(volume);
+      currentVolume = volume;
+      logger.d('Set volume to : $volume');
+      notifyListeners();
+    } catch (e) {
+      logger.e(e);
+    }
+  }
 
   ///
   ///PRIVATE METHODS
@@ -92,14 +140,40 @@ class HomePageProvider extends ChangeNotifier {
 
   Future<void> _loadYoutubePlayerController() async {
     try {
-      final res = await youtubeExplodeRepo.getYoutubePlayerController(
+      final videoId = await youtubeExplodeRepo.getVideoIdViaUrl(
         videoUrl: _currentVideoUrl!,
       );
-      _youtubePlayerController = res;
+      youtubePlayerController!.loadVideoById(videoId: videoId);
+      // final res = await youtubeExplodeRepo.getYoutubePlayerController(
+      //   videoUrl: _currentVideoUrl!,
+      // );
+      // _youtubePlayerController = res;
 
       // notifyListeners();
     } catch (e) {
+      logger.e(e);
       rethrow;
     }
+  }
+
+  Future<void> _closeYoutubePlayerController() async {
+    if (_youtubePlayerController != null) {
+      await _youtubePlayerController!.close();
+      _youtubePlayerController = null;
+      logger.d('Old YoutubePlayerController closed');
+    }
+  }
+
+  Future<void> _checkMute() async {
+    isMute = await _youtubePlayerController?.isMuted ?? true;
+
+    logger.d('Current IsMute $isMute');
+  }
+
+  @override
+  void dispose() {
+    _youtubePlayerController?.close();
+    _youtubePlayerController = null;
+    super.dispose();
   }
 }

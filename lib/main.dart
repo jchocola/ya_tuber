@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [Provider(create: (context) => HomePageProvider(youtubeExplodeRepo: getIt<YoutubeExplodeRepo>()))],
+      providers: [ChangeNotifierProvider(create: (context) => HomePageProvider(youtubeExplodeRepo: getIt<YoutubeExplodeRepo>()))],
       child: NeumorphicApp(
         theme: lightTheme,
         debugShowCheckedModeBanner: false,

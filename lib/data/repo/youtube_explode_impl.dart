@@ -1,9 +1,10 @@
 import 'package:ya_tuber/domain/repo/youtube_explode_repo.dart';
 import 'package:ya_tuber/main.dart';
 import 'package:youtube_explode_dart/youtube_explode_dart.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart' show YoutubePlayer;
-import 'package:youtube_player_iframe/youtube_player_iframe.dart' show YoutubePlayerController, YoutubePlayerParams;
-
+import 'package:youtube_player_flutter/youtube_player_flutter.dart'
+    show YoutubePlayer;
+import 'package:youtube_player_iframe/youtube_player_iframe.dart'
+    show YoutubePlayerController, YoutubePlayerParams;
 
 class YoutubeExplodeImpl implements YoutubeExplodeRepo {
   final yt = YoutubeExplode();
@@ -42,11 +43,22 @@ class YoutubeExplodeImpl implements YoutubeExplodeRepo {
     try {
       final videoId = await getVideoIdViaUrl(videoUrl: videoUrl);
 
-      final controller = YoutubePlayerController.fromVideoId(
-  videoId: videoId,
-  autoPlay: false,
-  params: const YoutubePlayerParams(showFullscreenButton: true, origin: 'https://www.youtube-nocookie.com'),
-);
+      final controller = YoutubePlayerController(
+        params: YoutubePlayerParams(
+          mute: false,
+          showControls: true,
+          showFullscreenButton: true,
+          origin: 'https://www.youtube-nocookie.com'
+        ),
+      );
+      controller.loadVideoById(videoId: videoId);
+
+      //       final controller = YoutubePlayerController.fromVideoId(
+      //   videoId: videoId,
+      //   autoPlay: false,
+
+      //   params: const YoutubePlayerParams(showFullscreenButton: true, origin: 'https://www.youtube-nocookie.com'),
+      // );
 
       logger.i(controller);
       return controller;
@@ -65,7 +77,6 @@ class YoutubeExplodeImpl implements YoutubeExplodeRepo {
 
       logger.i(res);
 
-  
       return res;
     } catch (e) {
       logger.e(e);

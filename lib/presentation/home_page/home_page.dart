@@ -8,7 +8,8 @@ import 'package:ya_tuber/core/custom_snackbar.dart';
 import 'package:ya_tuber/data/repo/youtube_explode_impl.dart';
 import 'package:ya_tuber/presentation/home_page/provider/home_page_provider.dart';
 import 'package:ya_tuber/presentation/home_page/widget/info_widget.dart';
-import 'package:ya_tuber/presentation/home_page/widget/play_buttons.dart';
+import 'package:ya_tuber/presentation/home_page/widget/play_buttons_have_controller.dart';
+import 'package:ya_tuber/presentation/home_page/widget/play_buttons_not_controller.dart';
 import 'package:ya_tuber/presentation/home_page/widget/playlist_widget.dart';
 import 'package:ya_tuber/widget/custom_circle_button.dart';
 import 'package:ya_tuber/widget/custom_input.dart';
@@ -42,6 +43,7 @@ class HomePage extends StatelessWidget {
   }
 
   Widget buildBody(BuildContext context) {
+    final homePageProvider_listen = context.watch<HomePageProvider>();
     return Padding(
       padding: EdgeInsetsGeometry.all(AppConstant.appPadding),
       child: SingleChildScrollView(
@@ -65,11 +67,10 @@ class HomePage extends StatelessWidget {
                 CustomCircleButton(
                   onPressed: () async {
                     try {
-                       await context.read<HomePageProvider>().loadVideoInfo();
+                      await context.read<HomePageProvider>().loadVideoInfo();
                     } catch (e) {
-                      showCustomSnackbar(context,content: e.toString() );
+                      showCustomSnackbar(context, content: e.toString());
                     }
-                   
                   },
                   icon: AppIcon.searchIcon,
                   boxShape: NeumorphicBoxShape.roundRect(
@@ -79,7 +80,7 @@ class HomePage extends StatelessWidget {
               ],
             ),
             Gap(AppConstant.appPadding),
-            PlayButtons(),
+            homePageProvider_listen.youtubePlayerController !=null ? PlayButtons_when_have_controller() : PlayButtons_when_not_controller(),
             PlaylistWidget(),
           ],
         ),
