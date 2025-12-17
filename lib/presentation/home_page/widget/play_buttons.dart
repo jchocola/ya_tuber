@@ -21,7 +21,9 @@ class PlayButtons extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            CustomCircleButton(onPressed: () {}, icon: AppIcon.skipBackdIcon),
+            CustomCircleButton(onPressed: () {
+               homePageProvider_read.playVideo();
+            }, icon: AppIcon.skipBackdIcon),
             CustomCircleButton(
               onPressed: () {
                 homePageProvider_read.pauseVideo();

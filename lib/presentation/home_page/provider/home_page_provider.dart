@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ya_tuber/domain/repo/youtube_explode_repo.dart';
 import 'package:ya_tuber/main.dart';
 import 'package:youtube_explode_dart/youtube_explode_dart.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:youtube_player_iframe/youtube_player_iframe.dart'
+    show YoutubePlayerController;
 
 class HomePageProvider extends ChangeNotifier {
   final YoutubeExplodeRepo youtubeExplodeRepo;
@@ -59,12 +60,23 @@ class HomePageProvider extends ChangeNotifier {
 
   void pauseVideo() async {
     try {
-      _youtubePlayerController?.pause();
+      _youtubePlayerController?.pauseVideo();
       logger.i('Pause video tapped');
     } catch (e) {
       logger.e(e);
     }
   }
+
+  void playVideo() async {
+    try {
+      _youtubePlayerController?.playVideo();
+      logger.i('Play video tapped');
+    } catch (e) {
+      logger.e(e);
+    }
+  }
+
+  
 
   ///
   ///PRIVATE METHODS
