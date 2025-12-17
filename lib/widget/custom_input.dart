@@ -5,8 +5,9 @@ import 'package:ya_tuber/core/light_app_color.dart';
 import 'package:ya_tuber/widget/custom_circle_button.dart';
 
 class CustomInput extends StatelessWidget {
-  const CustomInput({super.key, this.hintText = 'Hint Text'});
+  const CustomInput({super.key, this.hintText = 'Hint Text' , this.onChanged});
   final String hintText;
+  final void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return Neumorphic(
@@ -14,9 +15,9 @@ class CustomInput extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: AppConstant.widgetPadding),
         child: TextField(
+          onChanged: onChanged,
           cursorColor: LightAppColor.accentColor,
           decoration: InputDecoration(
-           
             hintText: hintText,
             border: UnderlineInputBorder(borderSide: BorderSide.none),
           ),

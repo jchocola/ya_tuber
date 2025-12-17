@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
+import 'package:provider/provider.dart';
 import 'package:ya_tuber/core/app_constant.dart';
+import 'package:ya_tuber/presentation/home_page/provider/home_page_provider.dart';
 import 'package:ya_tuber/presentation/home_page/widget/youtube_player_widget.dart';
 
 class InfoWidget extends StatelessWidget {
@@ -9,6 +11,9 @@ class InfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
+    final homePageProvider_listen = context.watch<HomePageProvider>();
+
     return Neumorphic(
       child: Padding(
         padding: EdgeInsetsGeometry.all(AppConstant.widgetPadding),
@@ -24,12 +29,14 @@ class InfoWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 YoutubePlayerWidget(),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('The Neumorphic Dream: Synthw'),
-                    Text('CyberSynth Channel'),
-                  ],
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(homePageProvider_listen.video?.title ?? '', maxLines: 2,),
+                      Text(homePageProvider_listen.video?.author ?? ''),
+                    ],
+                  ),
                 ),
               ],
             ),

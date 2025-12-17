@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:gap/gap.dart';
+import 'package:provider/provider.dart';
 import 'package:ya_tuber/core/app_constant.dart';
 import 'package:ya_tuber/core/app_icon.dart';
 import 'package:ya_tuber/core/custom_snackbar.dart';
+import 'package:ya_tuber/data/repo/youtube_explode_impl.dart';
+import 'package:ya_tuber/presentation/home_page/provider/home_page_provider.dart';
 import 'package:ya_tuber/presentation/home_page/widget/info_widget.dart';
 import 'package:ya_tuber/presentation/home_page/widget/play_buttons.dart';
 import 'package:ya_tuber/presentation/home_page/widget/playlist_widget.dart';
@@ -49,10 +52,24 @@ class HomePage extends StatelessWidget {
             Row(
               spacing: AppConstant.widgetPadding,
               children: [
-                Expanded(child: CustomInput(hintText: 'Past Youtube link...')),
+                Expanded(
+                  child: CustomInput(
+                    hintText: 'Past Youtube link...',
+                    onChanged: (value) {
+                      context.read<HomePageProvider>().setCurrentVideoUrl(
+                        value,
+                      );
+                    },
+                  ),
+                ),
                 CustomCircleButton(
-                  onPressed: () {
-                    showCustomSnackbar(context);
+                  onPressed: () async {
+                    try {
+                       await context.read<HomePageProvider>().loadVideoInfo();
+                    } catch (e) {
+                      showCustomSnackbar(context,content: e.toString() );
+                    }
+                   
                   },
                   icon: AppIcon.searchIcon,
                   boxShape: NeumorphicBoxShape.roundRect(
