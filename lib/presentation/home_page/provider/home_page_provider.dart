@@ -24,6 +24,10 @@ class HomePageProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  ///
+  /// PUBLIC METHODS
+  ///
+
   Future<void> loadVideoInfo() async {
     try {
       // if current video url is empty
@@ -53,6 +57,18 @@ class HomePageProvider extends ChangeNotifier {
     }
   }
 
+  void pauseVideo() async {
+    try {
+      _youtubePlayerController?.pause();
+      logger.i('Pause video tapped');
+    } catch (e) {
+      logger.e(e);
+    }
+  }
+
+  ///
+  ///PRIVATE METHODS
+  ///
   Future<void> _loadVideo() async {
     final res = await youtubeExplodeRepo.getVideoFullInfo(
       videoUrl: _currentVideoUrl!,
