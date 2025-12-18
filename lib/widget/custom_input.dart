@@ -14,12 +14,23 @@ class CustomInput extends StatelessWidget {
       style: NeumorphicStyle(depth: AppConstant.neumoDepthNegative),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: AppConstant.widgetPadding),
-        child: TextField(
-          onChanged: onChanged,
-          cursorColor: LightAppColor.accentColor,
-          decoration: InputDecoration(
-            hintText: hintText,
-            border: UnderlineInputBorder(borderSide: BorderSide.none),
+        child: Theme(
+          data: ThemeData(
+            textSelectionTheme: TextSelectionThemeData(
+              selectionColor: LightAppColor.accentColor,
+              selectionHandleColor: LightAppColor.accentColor
+            )
+          ),
+          child: TextField(
+            onChanged: onChanged,
+            
+            cursorColor: LightAppColor.accentColor,
+            mouseCursor: MouseCursor.defer,
+            decoration: InputDecoration(
+              hoverColor:LightAppColor.accentColor ,
+              hintText: hintText,
+              border: UnderlineInputBorder(borderSide: BorderSide.none),
+            ),
           ),
         ),
       ),
