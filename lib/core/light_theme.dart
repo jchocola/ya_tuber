@@ -4,4 +4,5 @@ import 'package:ya_tuber/core/light_app_color.dart';
 const lightTheme = NeumorphicThemeData(
   baseColor: LightAppColor.baseColor,
   accentColor: LightAppColor.accentColor,
+  variantColor: LightAppColor.variantColor,
 );
