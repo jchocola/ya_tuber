@@ -23,7 +23,7 @@ class HomePageProvider extends ChangeNotifier {
     ),
   );
   bool isMute = true;
-  int currentVolume = 0;
+  int currentVolume = 70;
   int currentTime = 0;
 
   YoutubePlayerController? get youtubePlayerController =>
@@ -66,7 +66,6 @@ class HomePageProvider extends ChangeNotifier {
 
       // check mute
       isMute = false;
-      currentVolume = 70;
       // await _checkMute();
 
       notifyListeners();

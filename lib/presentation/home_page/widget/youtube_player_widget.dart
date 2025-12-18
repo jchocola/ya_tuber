@@ -21,8 +21,8 @@ class YoutubePlayerWidget extends StatelessWidget {
     return Neumorphic(
       style: NeumorphicStyle(depth: AppConstant.neumoDepthNegative),
       child: SizedBox(
-        width: size.width * 0.5,
-        height: size.width * 0.3,
+        width: size.width * 0.6 ,
+        height: size.width * 0.4,
         child: controller == null ? SizedBox() : YoutubePlayer(controller: controller!, aspectRatio: 5 / 3),
       ),
     );

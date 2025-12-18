@@ -24,33 +24,27 @@ class InfoWidget extends StatelessWidget {
             ///
             /// Circle avatar and name
             ///
-            Row(
+            Column(
               spacing: AppConstant.widgetPadding,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                YoutubePlayerWidget(),
-                Flexible(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(homePageProvider_listen.video?.title ?? '', maxLines: 2,),
-                      Text(homePageProvider_listen.video?.author ?? ''),
-                    ],
-                  ),
-                ),
+                Center(child: YoutubePlayerWidget()),
+
+                Text(homePageProvider_listen.video?.title ?? '', maxLines: 2),
+                Text(homePageProvider_listen.video?.author ?? ''),
               ],
             ),
 
             ///
             /// Progress , Duration left
             ///
-            Text('Progress : 65%'),
+            // Text('Progress : 65%'),
 
-            NeumorphicProgress(
-              curve: AppConstant.neumorphicCurve,
-              style: ProgressStyle(depth: AppConstant.neumoDepthNegative),
-              percent: 0.65,
-            ),
+            // NeumorphicProgress(
+            //   curve: AppConstant.neumorphicCurve,
+            //   style: ProgressStyle(depth: AppConstant.neumoDepthNegative),
+            //   percent: 0.65,
+            // ),
           ],
         ),
       ),
