@@ -11,6 +11,8 @@ class SettingPageAppbar extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
+
+     final theme = Theme.of(context);
     return Neumorphic(
       child: Padding(
         padding: EdgeInsets.all(AppConstant.appPadding),
@@ -22,7 +24,7 @@ class SettingPageAppbar extends StatelessWidget
                 Navigator.pop(context);
               },
             ),
-            Text('Settings'),
+            Text('Settings' , style: theme.textTheme.titleMedium,),
       
             // Spacer(),
       

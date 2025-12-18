@@ -13,28 +13,38 @@ class CustomhomePageAppbar extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Neumorphic(
       child: Padding(
         padding: EdgeInsets.all(AppConstant.appPadding),
         child: Row(
           children: [
-            Text('YaTube'),
+            Text('YaTube', style: theme.textTheme.titleMedium,),
 
             Spacer(),
 
             ///
             ///PLAYLIST
             ///
-            CustomCircleButton(onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> PlaylistPage())); 
-            }, icon: AppIcon.playlistIcon),
+            CustomCircleButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PlaylistPage()),
+                );
+              },
+              icon: AppIcon.playlistIcon,
+            ),
 
             ///
             /// SETTING
             ///
             CustomCircleButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> SettingPage()));
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SettingPage()),
+                );
               },
               icon: AppIcon.settingIcon,
             ),

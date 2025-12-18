@@ -12,12 +12,13 @@ class AppareanceWidget extends StatelessWidget {
       spacing: AppConstant.widgetPadding,
       children: [
         Text('Appearance'),
-        SettingTitle(title: 'Theme',withSwitch: true, onPressed: () {
-          
-        },),
-        SettingTitle(title: 'Language',onPressed: () {
-          
-        },),
+        SettingTitle(
+          title: 'Theme',
+          withSwitch: true,
+          onPressed: () {},
+          subTitle: 'Use dark theme (coming soon)',
+        ),
+        SettingTitle(title: 'Language', onPressed: () {}),
       ],
     );
   }

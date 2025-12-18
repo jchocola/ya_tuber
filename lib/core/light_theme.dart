@@ -5,4 +5,13 @@ const lightTheme = NeumorphicThemeData(
   baseColor: LightAppColor.baseColor,
   accentColor: LightAppColor.accentColor,
   variantColor: LightAppColor.variantColor,
+  
+
+  iconTheme: IconThemeData(
+    size: 20
+  ),
+
+  textTheme: TextTheme(
+    
+  )
 );
