@@ -18,7 +18,11 @@ class VolumeWidget extends StatelessWidget {
         padding: EdgeInsets.all(AppConstant.widgetPadding),
         child: Row(
           children: [
-            Icon(AppIcon.volumeOn),
+            Icon(
+              homePageProvider_listen.currentVolume != 0
+                  ? homePageProvider_listen.currentVolume <50 ? AppIcon.volumeOn1 : AppIcon.volumeOn2
+                  : AppIcon.volumeOff,
+            ),
             Expanded(
               child: CustomNeumoSlider(
                 minValue: 0,

@@ -12,7 +12,8 @@ class AppIcon {
   static const pauseIcon = LucideIcons.pause300;
   static const playIcon = LucideIcons.play300;
 
-  static const volumeOn = LucideIcons.volume2300;
+  static const volumeOn1 = LucideIcons.volume1300; 
+  static const volumeOn2 = LucideIcons.volume2300;
   static const volumeOff = LucideIcons.volumeOff300;
 
   static const deleteIcon = LucideIcons.trash2300;

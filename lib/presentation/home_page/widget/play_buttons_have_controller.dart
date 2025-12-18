@@ -69,18 +69,21 @@ class PlayButtons_when_have_controller extends StatelessWidget {
                 await homePageProvider_read.seekTo(value: value);
               },
 
-
-             ///
-             /// CURRENT TIME AND TOTAL DURATION
-             /// 
+              ///
+              /// CURRENT TIME AND TOTAL DURATION
+              ///
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                 converSecToCorrectFromat( homePageProvider_listen.currentTime)
+                  converSecToCorrectFromat(homePageProvider_listen.currentTime),
                 ),
-                Text(converSecToCorrectFromat(homePageProvider_read.video?.duration!.inSeconds)),
+                Text(
+                  converSecToCorrectFromat(
+                    homePageProvider_read.video?.duration!.inSeconds,
+                  ),
+                ),
               ],
             ),
 
@@ -100,7 +103,7 @@ class PlayButtons_when_have_controller extends StatelessWidget {
                     },
                     icon: homePageProvider_listen.isMute
                         ? AppIcon.volumeOff
-                        : AppIcon.volumeOn,
+                        : AppIcon.volumeOn2,
                   ),
                 ),
 
