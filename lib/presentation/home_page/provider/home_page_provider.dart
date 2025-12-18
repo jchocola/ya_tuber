@@ -24,6 +24,7 @@ class HomePageProvider extends ChangeNotifier {
   );
   bool isMute = true;
   int currentVolume = 0;
+  int currentTime = 0;
 
   YoutubePlayerController? get youtubePlayerController =>
       _youtubePlayerController;
@@ -40,9 +41,8 @@ class HomePageProvider extends ChangeNotifier {
   Future<void> loadVideoInfo() async {
     try {
       // ⛔ закрываем старый
-     // await _closeYoutubePlayerController();
+      // await _closeYoutubePlayerController();
 
-     
       // if current video url is empty
       if (_currentVideoUrl == null || _currentVideoUrl!.isEmpty) {
         throw Exception('URL EMPTY');
@@ -72,6 +72,20 @@ class HomePageProvider extends ChangeNotifier {
       notifyListeners();
     } catch (e) {
       rethrow;
+    }
+  }
+
+  Future<void> seekTo({required double value}) async {
+    try {
+      setCurrentTime(value.toInt());
+
+      await _youtubePlayerController?.seekTo(
+        seconds: value,
+        allowSeekAhead: true,
+      );
+      logger.i('Seek forward $value s');
+    } catch (e) {
+      logger.e(e);
     }
   }
 
@@ -126,6 +140,11 @@ class HomePageProvider extends ChangeNotifier {
     }
   }
 
+  void setCurrentTime(int value) {
+    currentTime = value.toInt();
+    notifyListeners();
+  }
+
   ///
   ///PRIVATE METHODS
   ///
@@ -144,6 +163,11 @@ class HomePageProvider extends ChangeNotifier {
         videoUrl: _currentVideoUrl!,
       );
       youtubePlayerController!.loadVideoById(videoId: videoId);
+
+      youtubePlayerController!.videoStateStream.listen((data) {
+        setCurrentTime(data.position.inSeconds);
+        logger.d(data.position);
+      });
       // final res = await youtubeExplodeRepo.getYoutubePlayerController(
       //   videoUrl: _currentVideoUrl!,
       // );

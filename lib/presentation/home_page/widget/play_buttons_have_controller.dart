@@ -3,6 +3,7 @@ import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:provider/provider.dart';
 import 'package:ya_tuber/core/app_constant.dart';
 import 'package:ya_tuber/core/app_icon.dart';
+import 'package:ya_tuber/core/utils/convert_sec_to_correct_format.dart';
 import 'package:ya_tuber/presentation/home_page/provider/home_page_provider.dart';
 import 'package:ya_tuber/presentation/home_page/widget/playlist_widget.dart';
 import 'package:ya_tuber/presentation/home_page/widget/volume_widget.dart';
@@ -48,17 +49,39 @@ class PlayButtons_when_have_controller extends StatelessWidget {
                   ),
                 ),
 
+                ///
+                ///
+                ///
                 CustomCircleButton(
-                  onPressed: () {},
+                  onPressed: () async {},
                   icon: AppIcon.skipForwardIcon,
                 ),
               ],
             ),
 
-            CustomNeumoSlider(),
+            CustomNeumoSlider(
+              minValue: 0,
+              maxValue:
+                  homePageProvider_read.video?.duration?.inSeconds.toDouble() ??
+                  100,
+              currentValue: homePageProvider_listen.currentTime.toDouble(),
+              onChanged: (value) async {
+                await homePageProvider_read.seekTo(value: value);
+              },
+
+
+             ///
+             /// CURRENT TIME AND TOTAL DURATION
+             /// 
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [Text('2:34'), Text('10:34')],
+              children: [
+                Text(
+                 converSecToCorrectFromat( homePageProvider_listen.currentTime)
+                ),
+                Text(converSecToCorrectFromat(homePageProvider_read.video?.duration!.inSeconds)),
+              ],
             ),
 
             Row(
@@ -70,10 +93,10 @@ class PlayButtons_when_have_controller extends StatelessWidget {
                 YoutubeValueBuilder(
                   controller: homePageProvider_listen.youtubePlayerController,
                   builder: (contex, value) => CustomCircleButton(
-                    onPressed: () async{
+                    onPressed: () async {
                       homePageProvider_read.isMute
                           ? await homePageProvider_read.setMute()
-                          :await homePageProvider_read.unMute();
+                          : await homePageProvider_read.unMute();
                     },
                     icon: homePageProvider_listen.isMute
                         ? AppIcon.volumeOff
