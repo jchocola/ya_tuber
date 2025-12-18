@@ -6,6 +6,6 @@ String converSecToCorrectFromat(int? seconds) {
   if (seconds == null) {
     return '...';
   } else {
-    return '${(seconds ~/ 60) < 60 ? (seconds ~/ 60) : '${(seconds ~/ 60) ~/ 60 }:${(seconds ~/ 60)%60}'}:${(seconds % 60) < 10 ? '0${seconds % 60}' : (seconds % 60)}';
+    return '${(seconds ~/ 60) < 60 ? (seconds ~/ 60) : '${(seconds ~/ 60) ~/ 60}:${(seconds ~/ 60) % 60 < 10 ? '0${(seconds ~/ 60) % 60}' : '${(seconds ~/ 60) % 60}'}'}:${(seconds % 60) < 10 ? '0${seconds % 60}' : (seconds % 60)}';
   }
 }
