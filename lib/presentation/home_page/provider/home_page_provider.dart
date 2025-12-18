@@ -25,6 +25,8 @@ class HomePageProvider extends ChangeNotifier {
   bool isMute = false;
   int currentVolume = 70;
   int currentTime = 0;
+  List<double>? playBackRateList = [ -1,-0.5,1, 1.5,2];
+  double currentPlayBackRate = 1.0;
 
   YoutubePlayerController? get youtubePlayerController =>
       _youtubePlayerController;
@@ -67,6 +69,9 @@ class HomePageProvider extends ChangeNotifier {
       // check mute
       isMute = false;
       // await _checkMute();
+
+      // load play back rate list
+      await _loadPlayBackList();
 
       notifyListeners();
     } catch (e) {
@@ -120,7 +125,7 @@ class HomePageProvider extends ChangeNotifier {
 
   Future<void> unMute() async {
     try {
-     await _youtubePlayerController?.unMute();
+      await _youtubePlayerController?.unMute();
       // await _checkMute();
       isMute = false;
       logger.i('Unmute $isMute');
@@ -147,16 +152,14 @@ class HomePageProvider extends ChangeNotifier {
   }
 
   //TODO : PLAY BACK LOGIC
-  Future<void> setPlaybackRate() async {
+  Future<void> setPlaybackRate({required double value}) async {
     try {
-      await _youtubePlayerController?.setPlaybackRate(12);
+      currentPlayBackRate = value;
+      notifyListeners();
+      await _youtubePlayerController?.setPlaybackRate(value);
     } catch (e) {
       logger.e(e);
     }
-  }
-
-  Future<void> setPlayBack() async {
-    
   }
 
   ///
@@ -206,6 +209,12 @@ class HomePageProvider extends ChangeNotifier {
     isMute = await _youtubePlayerController?.isMuted ?? true;
 
     logger.d('Current IsMute $isMute');
+  }
+
+  Future<void> _loadPlayBackList() async {
+    final res = await _youtubePlayerController?.availablePlaybackRates;
+    playBackRateList = res;
+    logger.d('Play back rate List : ${playBackRateList}');
   }
 
   @override

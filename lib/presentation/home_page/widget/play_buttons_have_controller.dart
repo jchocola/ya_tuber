@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:provider/provider.dart';
 import 'package:ya_tuber/core/app_constant.dart';
 import 'package:ya_tuber/core/app_icon.dart';
+import 'package:ya_tuber/core/custom_snackbar.dart';
 import 'package:ya_tuber/core/utils/convert_sec_to_correct_format.dart';
 import 'package:ya_tuber/presentation/home_page/provider/home_page_provider.dart';
 import 'package:ya_tuber/presentation/home_page/widget/playlist_widget.dart';
@@ -59,9 +61,8 @@ class PlayButtons_when_have_controller extends StatelessWidget {
               ],
             ),
 
-
             ///
-            /// PLAY SLIDER 
+            /// PLAY SLIDER
             ///
             CustomNeumoSlider(
               minValue: 0,
@@ -110,11 +111,38 @@ class PlayButtons_when_have_controller extends StatelessWidget {
 
                 CustomCircleButton(onPressed: () {}, icon: AppIcon.repeatIcon),
 
-
-                  /// Play back rate
-                  //TODO: PLAYBACK LOGIC
-                 CustomCircleButton(onPressed: () {}, icon: AppIcon.speedIcon),
-
+                /// Play back rate
+                //TODO: PLAYBACK LOGIC
+                CupertinoContextMenu(
+                  actions: List.generate(
+                    homePageProvider_listen.playBackRateList?.length ?? 1,
+                    (index) {
+                      final value =
+                          homePageProvider_listen.playBackRateList?[index];
+                      return CupertinoContextMenuAction(
+                        onPressed: () async {
+                          Navigator.pop(context);
+                          await homePageProvider_read.setPlaybackRate(
+                            value: value!,
+                          );
+                        },
+                        isDefaultAction:
+                            value ==
+                            homePageProvider_listen.currentPlayBackRate,
+                        child: Text('$value'),
+                      );
+                    },
+                  ),
+                  child: CustomCircleButton(
+                    onPressed: () {
+                      showCustomSnackbar(
+                        context,
+                        content: 'Please long tap to set value',
+                      );
+                    },
+                    icon: AppIcon.speedIcon,
+                  ),
+                ),
 
                 CustomCircleButton(onPressed: () {}, icon: AppIcon.unsavedIcon),
               ],
