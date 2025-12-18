@@ -13,6 +13,7 @@ class PlaylistWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final playListProvider_listen = context.watch<PlaylistPageProvider>();
     final homePageProvider_listen = context.watch<HomePageProvider>();
+    final homePageProvider_read = context.read<HomePageProvider>();
     return Neumorphic(
       child: Theme(
         data: ThemeData(dividerColor: Colors.transparent),
@@ -26,7 +27,27 @@ class PlaylistWidget extends StatelessWidget {
                     index,
                   ) {
                     final track = playListProvider_listen.listTracks[index];
-                    return PlayListCard(isSetting: false, track: track, isPlaying: homePageProvider_listen.currentVideoId == track.videoId,);
+                    return PlayListCard(
+                      isSetting: false,
+                      track: track,
+                      isPlaying:
+                          homePageProvider_listen.currentVideoId ==
+                          track.videoId,
+                      onTap: () async {
+                        ///
+                        /// IF CURRENT PLAY VIDEO , THEN DONT NOPTHING
+                        ///
+                        if (homePageProvider_read.currentVideoId ==
+                            track.videoId) {
+                          return;
+                        } else {
+                           await homePageProvider_read.playTrackFromPlayList(
+                          track: track,
+                        );
+                        }
+                       
+                      },
+                    );
                   })
                 : [Text('Empty')],
           ),

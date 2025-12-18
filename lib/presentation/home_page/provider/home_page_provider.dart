@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ya_tuber/domain/entity/track_entity.dart';
 import 'package:ya_tuber/domain/repo/youtube_explode_repo.dart';
 import 'package:ya_tuber/main.dart';
 import 'package:youtube_explode_dart/youtube_explode_dart.dart';
@@ -152,12 +153,21 @@ class HomePageProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  //TODO : PLAY BACK LOGIC
   Future<void> setPlaybackRate({required double value}) async {
     try {
       currentPlayBackRate = value;
       notifyListeners();
       await _youtubePlayerController?.setPlaybackRate(value);
+    } catch (e) {
+      logger.e(e);
+    }
+  }
+
+  Future<void> playTrackFromPlayList({required TrackEntity track}) async {
+    try {
+      _currentVideoUrl = track.videoId;
+      notifyListeners();
+      await loadVideoInfo();
     } catch (e) {
       logger.e(e);
     }

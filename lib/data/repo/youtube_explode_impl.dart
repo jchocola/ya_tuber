@@ -30,6 +30,7 @@ class YoutubeExplodeImpl implements YoutubeExplodeRepo {
     try {
       final res = await yt.videos.get(videoUrl);
       logger.i(res);
+      logger.d('ThumbnailUrl : ${res.thumbnails.lowResUrl}');
       return res;
     } catch (e) {
       logger.e(e);
@@ -48,7 +49,7 @@ class YoutubeExplodeImpl implements YoutubeExplodeRepo {
           mute: false,
           showControls: true,
           showFullscreenButton: true,
-          origin: 'https://www.youtube-nocookie.com'
+          origin: 'https://www.youtube-nocookie.com',
         ),
       );
       controller.loadVideoById(videoId: videoId);

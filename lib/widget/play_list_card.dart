@@ -14,11 +14,13 @@ class PlayListCard extends StatelessWidget {
     super.key,
     this.isPlaying = false,
     this.isSetting = false,
-    this.track
+    this.track,
+    this.onTap
   });
   final bool isPlaying;
   final bool isSetting;
   final TrackEntity? track;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,50 +28,53 @@ class PlayListCard extends StatelessWidget {
         vertical: AppConstant.widgetPadding,
       ),
       child: RepaintBoundary(
-        child: Neumorphic(
-          style: NeumorphicStyle(
-            lightSource: LightSource.topLeft,
-            depth: isPlaying ? AppConstant.neumoDepthNegative : 0,
-          ),
-          child: ListTile(
-            leading: isPlaying ? CustomNeumoIcon(iconData: AppIcon.audioLinesIcon,) :Icon(AppIcon.musicIcon),
-            title: Text(track?.title ?? 'Lofi Coding', maxLines: 3,),
-            subtitle: Text(track?.subtitle ?? 'FocusMusic'),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ///
-                /// EDIT
-                ///
-                isSetting
-                    ? CustomCircleButton(
-                        onPressed: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) => EditTrackPage(),
-                          );
-                        },
-                        icon: AppIcon.editIcon,
-                      )
-                    : SizedBox(),
-
-                ///
-                /// DELETE
-                ///
-                isSetting
-                    ? CustomCircleButton(
-                        onPressed: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) => ConfirmDeletePage(
-                              track: track,
-                            ),
-                          );
-                        },
-                        icon: AppIcon.deleteIcon,
-                      )
-                    : SizedBox(),
-              ],
+        child: GestureDetector(
+          onTap: onTap,
+          child: Neumorphic(
+            style: NeumorphicStyle(
+              lightSource: LightSource.topLeft,
+              depth: isPlaying ? AppConstant.neumoDepthNegative : 0,
+            ),
+            child: ListTile(
+              leading: isPlaying ? CustomNeumoIcon(iconData: AppIcon.audioLinesIcon,) :Icon(AppIcon.musicIcon),
+              title: Text(track?.title ?? 'Lofi Coding', maxLines: 3,),
+              subtitle: Text(track?.subtitle ?? 'FocusMusic'),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ///
+                  /// EDIT
+                  ///
+                  isSetting
+                      ? CustomCircleButton(
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) => EditTrackPage(),
+                            );
+                          },
+                          icon: AppIcon.editIcon,
+                        )
+                      : SizedBox(),
+          
+                  ///
+                  /// DELETE
+                  ///
+                  isSetting
+                      ? CustomCircleButton(
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) => ConfirmDeletePage(
+                                track: track,
+                              ),
+                            );
+                          },
+                          icon: AppIcon.deleteIcon,
+                        )
+                      : SizedBox(),
+                ],
+              ),
             ),
           ),
         ),
