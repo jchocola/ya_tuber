@@ -22,7 +22,7 @@ class HomePageProvider extends ChangeNotifier {
       origin: 'https://www.youtube-nocookie.com',
     ),
   );
-  bool isMute = true;
+  bool isMute = false;
   int currentVolume = 70;
   int currentTime = 0;
 
@@ -109,7 +109,8 @@ class HomePageProvider extends ChangeNotifier {
   Future<void> setMute() async {
     try {
       await _youtubePlayerController?.mute();
-      await _checkMute();
+      // await _checkMute();
+      isMute = true;
       logger.i('SetMute $isMute');
       notifyListeners();
     } catch (e) {
@@ -119,8 +120,9 @@ class HomePageProvider extends ChangeNotifier {
 
   Future<void> unMute() async {
     try {
-      await _youtubePlayerController?.unMute();
-      await _checkMute();
+     await _youtubePlayerController?.unMute();
+      // await _checkMute();
+      isMute = false;
       logger.i('Unmute $isMute');
       notifyListeners();
     } catch (e) {
@@ -142,6 +144,19 @@ class HomePageProvider extends ChangeNotifier {
   void setCurrentTime(int value) {
     currentTime = value.toInt();
     notifyListeners();
+  }
+
+  //TODO : PLAY BACK LOGIC
+  Future<void> setPlaybackRate() async {
+    try {
+      await _youtubePlayerController?.setPlaybackRate(12);
+    } catch (e) {
+      logger.e(e);
+    }
+  }
+
+  Future<void> setPlayBack() async {
+    
   }
 
   ///

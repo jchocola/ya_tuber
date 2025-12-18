@@ -59,6 +59,10 @@ class PlayButtons_when_have_controller extends StatelessWidget {
               ],
             ),
 
+
+            ///
+            /// PLAY SLIDER 
+            ///
             CustomNeumoSlider(
               minValue: 0,
               maxValue:
@@ -93,21 +97,25 @@ class PlayButtons_when_have_controller extends StatelessWidget {
                 ///
                 /// MUTE ON/OFF
                 ///
-                YoutubeValueBuilder(
-                  controller: homePageProvider_listen.youtubePlayerController,
-                  builder: (contex, value) => CustomCircleButton(
-                    onPressed: () async {
-                      homePageProvider_read.isMute
-                          ? await homePageProvider_read.setMute()
-                          : await homePageProvider_read.unMute();
-                    },
-                    icon: homePageProvider_listen.isMute
-                        ? AppIcon.volumeOff
-                        : AppIcon.volumeOn2,
-                  ),
+                CustomCircleButton(
+                  onPressed: () async {
+                    homePageProvider_read.isMute
+                        ? await homePageProvider_read.unMute()
+                        : await homePageProvider_read.setMute();
+                  },
+                  icon: homePageProvider_listen.isMute == true
+                      ? AppIcon.volumeOff
+                      : AppIcon.volumeOn2,
                 ),
 
                 CustomCircleButton(onPressed: () {}, icon: AppIcon.repeatIcon),
+
+
+                  /// Play back rate
+                  //TODO: PLAYBACK LOGIC
+                 CustomCircleButton(onPressed: () {}, icon: AppIcon.speedIcon),
+
+
                 CustomCircleButton(onPressed: () {}, icon: AppIcon.unsavedIcon),
               ],
             ),
