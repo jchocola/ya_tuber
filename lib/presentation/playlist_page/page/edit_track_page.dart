@@ -80,6 +80,7 @@ class _EditTrackPageState extends State<EditTrackPage> {
                             videoId: widget.track!.videoId,
                             title: titleController.text,
                             subtitle: subTitleController.text,
+                            thumbnail: widget.track!.thumbnail
                           );
 
                           Navigator.pop(context);

@@ -12,6 +12,7 @@ abstract class TrackModel with _$TrackModel {
     required String videoId,
     required String title,
     required String subtitle,
+    required String thumbnail,
   }) = _TrackModel;
 
   factory TrackModel.fromJson(Map<String, dynamic> json) =>
@@ -19,12 +20,13 @@ abstract class TrackModel with _$TrackModel {
 
   /// CONVERT MODEL TO ENTITY
   TrackEntity toEntity() =>
-      TrackEntity(videoId: videoId, title: title, subtitle: subtitle);
+      TrackEntity(videoId: videoId, title: title, subtitle: subtitle, thumbnail: thumbnail);
 
   /// CONVERT FROM ENTITY
   factory TrackModel.fromEntity(TrackEntity entity) => TrackModel(
     videoId: entity.videoId,
     title: entity.title,
     subtitle: entity.subtitle,
+    thumbnail: entity.thumbnail
   );
 }

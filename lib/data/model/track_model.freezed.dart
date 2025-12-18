@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$TrackModel implements DiagnosticableTreeMixin {
 
- String get videoId; String get title; String get subtitle;
+ String get videoId; String get title; String get subtitle; String get thumbnail;
 /// Create a copy of TrackModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,21 +29,21 @@ $TrackModelCopyWith<TrackModel> get copyWith => _$TrackModelCopyWithImpl<TrackMo
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'TrackModel'))
-    ..add(DiagnosticsProperty('videoId', videoId))..add(DiagnosticsProperty('title', title))..add(DiagnosticsProperty('subtitle', subtitle));
+    ..add(DiagnosticsProperty('videoId', videoId))..add(DiagnosticsProperty('title', title))..add(DiagnosticsProperty('subtitle', subtitle))..add(DiagnosticsProperty('thumbnail', thumbnail));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is TrackModel&&(identical(other.videoId, videoId) || other.videoId == videoId)&&(identical(other.title, title) || other.title == title)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TrackModel&&(identical(other.videoId, videoId) || other.videoId == videoId)&&(identical(other.title, title) || other.title == title)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,videoId,title,subtitle);
+int get hashCode => Object.hash(runtimeType,videoId,title,subtitle,thumbnail);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'TrackModel(videoId: $videoId, title: $title, subtitle: $subtitle)';
+  return 'TrackModel(videoId: $videoId, title: $title, subtitle: $subtitle, thumbnail: $thumbnail)';
 }
 
 
@@ -54,7 +54,7 @@ abstract mixin class $TrackModelCopyWith<$Res>  {
   factory $TrackModelCopyWith(TrackModel value, $Res Function(TrackModel) _then) = _$TrackModelCopyWithImpl;
 @useResult
 $Res call({
- String videoId, String title, String subtitle
+ String videoId, String title, String subtitle, String thumbnail
 });
 
 
@@ -71,11 +71,12 @@ class _$TrackModelCopyWithImpl<$Res>
 
 /// Create a copy of TrackModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? videoId = null,Object? title = null,Object? subtitle = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? videoId = null,Object? title = null,Object? subtitle = null,Object? thumbnail = null,}) {
   return _then(_self.copyWith(
 videoId: null == videoId ? _self.videoId : videoId // ignore: cast_nullable_to_non_nullable
 as String,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,subtitle: null == subtitle ? _self.subtitle : subtitle // ignore: cast_nullable_to_non_nullable
+as String,thumbnail: null == thumbnail ? _self.thumbnail : thumbnail // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -161,10 +162,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String videoId,  String title,  String subtitle)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String videoId,  String title,  String subtitle,  String thumbnail)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _TrackModel() when $default != null:
-return $default(_that.videoId,_that.title,_that.subtitle);case _:
+return $default(_that.videoId,_that.title,_that.subtitle,_that.thumbnail);case _:
   return orElse();
 
 }
@@ -182,10 +183,10 @@ return $default(_that.videoId,_that.title,_that.subtitle);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String videoId,  String title,  String subtitle)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String videoId,  String title,  String subtitle,  String thumbnail)  $default,) {final _that = this;
 switch (_that) {
 case _TrackModel():
-return $default(_that.videoId,_that.title,_that.subtitle);case _:
+return $default(_that.videoId,_that.title,_that.subtitle,_that.thumbnail);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -202,10 +203,10 @@ return $default(_that.videoId,_that.title,_that.subtitle);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String videoId,  String title,  String subtitle)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String videoId,  String title,  String subtitle,  String thumbnail)?  $default,) {final _that = this;
 switch (_that) {
 case _TrackModel() when $default != null:
-return $default(_that.videoId,_that.title,_that.subtitle);case _:
+return $default(_that.videoId,_that.title,_that.subtitle,_that.thumbnail);case _:
   return null;
 
 }
@@ -217,12 +218,13 @@ return $default(_that.videoId,_that.title,_that.subtitle);case _:
 @JsonSerializable()
 
 class _TrackModel extends TrackModel with DiagnosticableTreeMixin {
-  const _TrackModel({required this.videoId, required this.title, required this.subtitle}): super._();
+  const _TrackModel({required this.videoId, required this.title, required this.subtitle, required this.thumbnail}): super._();
   factory _TrackModel.fromJson(Map<String, dynamic> json) => _$TrackModelFromJson(json);
 
 @override final  String videoId;
 @override final  String title;
 @override final  String subtitle;
+@override final  String thumbnail;
 
 /// Create a copy of TrackModel
 /// with the given fields replaced by the non-null parameter values.
@@ -238,21 +240,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'TrackModel'))
-    ..add(DiagnosticsProperty('videoId', videoId))..add(DiagnosticsProperty('title', title))..add(DiagnosticsProperty('subtitle', subtitle));
+    ..add(DiagnosticsProperty('videoId', videoId))..add(DiagnosticsProperty('title', title))..add(DiagnosticsProperty('subtitle', subtitle))..add(DiagnosticsProperty('thumbnail', thumbnail));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TrackModel&&(identical(other.videoId, videoId) || other.videoId == videoId)&&(identical(other.title, title) || other.title == title)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TrackModel&&(identical(other.videoId, videoId) || other.videoId == videoId)&&(identical(other.title, title) || other.title == title)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,videoId,title,subtitle);
+int get hashCode => Object.hash(runtimeType,videoId,title,subtitle,thumbnail);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'TrackModel(videoId: $videoId, title: $title, subtitle: $subtitle)';
+  return 'TrackModel(videoId: $videoId, title: $title, subtitle: $subtitle, thumbnail: $thumbnail)';
 }
 
 
@@ -263,7 +265,7 @@ abstract mixin class _$TrackModelCopyWith<$Res> implements $TrackModelCopyWith<$
   factory _$TrackModelCopyWith(_TrackModel value, $Res Function(_TrackModel) _then) = __$TrackModelCopyWithImpl;
 @override @useResult
 $Res call({
- String videoId, String title, String subtitle
+ String videoId, String title, String subtitle, String thumbnail
 });
 
 
@@ -280,11 +282,12 @@ class __$TrackModelCopyWithImpl<$Res>
 
 /// Create a copy of TrackModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? videoId = null,Object? title = null,Object? subtitle = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? videoId = null,Object? title = null,Object? subtitle = null,Object? thumbnail = null,}) {
   return _then(_TrackModel(
 videoId: null == videoId ? _self.videoId : videoId // ignore: cast_nullable_to_non_nullable
 as String,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,subtitle: null == subtitle ? _self.subtitle : subtitle // ignore: cast_nullable_to_non_nullable
+as String,thumbnail: null == thumbnail ? _self.thumbnail : thumbnail // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

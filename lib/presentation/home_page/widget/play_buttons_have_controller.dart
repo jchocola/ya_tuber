@@ -202,6 +202,7 @@ class PlayButtons_when_have_controller extends StatelessWidget {
                       videoId: homePageProvider_read.currentVideoId,
                       title: homePageProvider_read.video?.title ?? '',
                       subtitle: homePageProvider_read.video?.author ?? '',
+                      thumbnail: homePageProvider_read.video?.thumbnails.mediumResUrl ?? ''
                     );
                     logger.f(track.toString());
 
