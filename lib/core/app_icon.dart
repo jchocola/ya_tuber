@@ -33,4 +33,6 @@ class AppIcon {
   static const speedIcon = LucideIcons.gauge300;
 
   static const audioLinesIcon = LucideIcons.audioLines300;
+
+  static const arrowbackIcon = LucideIcons.chevronLeft300;
 }

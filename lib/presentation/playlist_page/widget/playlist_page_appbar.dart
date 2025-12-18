@@ -16,17 +16,21 @@ class PlaylistPageAppbar extends StatelessWidget
         padding: EdgeInsets.all(AppConstant.appPadding),
         child: Row(
           children: [
+            CustomCircleButton(
+              icon: AppIcon.arrowbackIcon,
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
             Text('PlayList'),
-      
+
             // Spacer(),
-      
-      
+
             // ///
             // ///PLAYLIST
             // ///
             // CustomCircleButton(onPressed: () {} , icon: AppIcon.playlistIcon,),
-      
-      
+
             // ///
             // /// SETTING
             // ///
