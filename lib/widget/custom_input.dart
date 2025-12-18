@@ -5,9 +5,10 @@ import 'package:ya_tuber/core/light_app_color.dart';
 import 'package:ya_tuber/widget/custom_circle_button.dart';
 
 class CustomInput extends StatelessWidget {
-  const CustomInput({super.key, this.hintText = 'Hint Text' , this.onChanged});
+  const CustomInput({super.key, this.hintText = 'Hint Text' , this.onChanged, this.controller});
   final String hintText;
   final void Function(String)? onChanged;
+  final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return Neumorphic(
@@ -23,7 +24,7 @@ class CustomInput extends StatelessWidget {
           ),
           child: TextField(
             onChanged: onChanged,
-            
+            controller: controller, 
             cursorColor: LightAppColor.accentColor,
             mouseCursor: MouseCursor.defer,
             decoration: InputDecoration(

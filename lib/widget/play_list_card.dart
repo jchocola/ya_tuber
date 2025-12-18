@@ -35,45 +35,58 @@ class PlayListCard extends StatelessWidget {
               lightSource: LightSource.topLeft,
               depth: isPlaying ? AppConstant.neumoDepthNegative : 0,
             ),
-            child: ListTile(
-              leading: isPlaying ? CustomNeumoIcon(iconData: AppIcon.audioLinesIcon,) :Icon(AppIcon.musicIcon),
-              title: Text(track?.title ?? 'Lofi Coding', maxLines: 3,),
-              subtitle: Text(track?.subtitle ?? 'FocusMusic'),
-              trailing: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  ///
-                  /// EDIT
-                  ///
-                  isSetting
-                      ? CustomCircleButton(
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) => EditTrackPage(),
-                            );
-                          },
-                          icon: AppIcon.editIcon,
-                        )
-                      : SizedBox(),
-          
-                  ///
-                  /// DELETE
-                  ///
-                  isSetting
-                      ? CustomCircleButton(
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) => ConfirmDeletePage(
-                                track: track,
-                              ),
-                            );
-                          },
-                          icon: AppIcon.deleteIcon,
-                        )
-                      : SizedBox(),
-                ],
+            child: Theme(
+              data: ThemeData(
+                listTileTheme: ListTileThemeData(
+                  horizontalTitleGap: 10,
+                  
+                )
+              ),
+              child: ListTile(
+                leading: isPlaying ? CustomNeumoIcon(iconData: AppIcon.audioLinesIcon,) :Icon(AppIcon.musicIcon),
+                title: Text(track?.title ?? 'Lofi Coding', maxLines: 3,),
+                subtitle: Text(track?.subtitle ?? 'FocusMusic'),
+            
+                trailing: Transform.scale(
+                  scale: 0.8,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      ///
+                      /// EDIT
+                      ///
+                      isSetting
+                          ? CustomCircleButton(
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => EditTrackPage(track: track,),
+                                );
+                              },
+                              icon: AppIcon.editIcon,
+                            )
+                          : SizedBox(),
+                          
+                      ///
+                      /// DELETE
+                      ///
+                      isSetting
+                          ? CustomCircleButton(
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => ConfirmDeletePage(
+                                    track: track,
+                                  ),
+                                );
+                              },
+                              icon: AppIcon.deleteIcon,
+                            )
+                          : SizedBox(),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
