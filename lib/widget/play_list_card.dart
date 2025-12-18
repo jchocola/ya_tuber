@@ -8,6 +8,8 @@ import 'package:ya_tuber/presentation/playlist_page/page/confirm_delete_page.dar
 import 'package:ya_tuber/presentation/playlist_page/page/edit_track_page.dart';
 import 'package:ya_tuber/widget/custom_circle_button.dart';
 import 'package:ya_tuber/widget/custom_neumo_icon.dart';
+import 'package:ya_tuber/widget/custom_small_thumbnail.dart';
+import 'package:ya_tuber/widget/rotating_widget.dart';
 
 class PlayListCard extends StatelessWidget {
   const PlayListCard({
@@ -38,12 +40,13 @@ class PlayListCard extends StatelessWidget {
             child: Theme(
               data: ThemeData(
                 listTileTheme: ListTileThemeData(
+                  titleAlignment: ListTileTitleAlignment.top,
                   horizontalTitleGap: 10,
-                  
+                  contentPadding: EdgeInsets.only(left: AppConstant.widgetPadding/2, right: 0)
                 )
               ),
               child: ListTile(
-                leading: isPlaying ? CustomNeumoIcon(iconData: AppIcon.audioLinesIcon,) :Icon(AppIcon.musicIcon),
+                leading:  isPlaying ? RotatingWidget(child:CustomSmallThumbnail(imageUrl: track?.thumbnail,) ) :  CustomSmallThumbnail(imageUrl: track?.thumbnail,),
                 title: Text(track?.title ?? 'Lofi Coding', maxLines: 3,),
                 subtitle: Text(track?.subtitle ?? 'FocusMusic'),
             
