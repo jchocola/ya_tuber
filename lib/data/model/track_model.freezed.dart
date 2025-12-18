@@ -123,7 +123,10 @@ return $default(_that);case _:
 final _that = this;
 switch (_that) {
 case _TrackModel():
-return $default(_that);}
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -182,7 +185,10 @@ return $default(_that.videoId,_that.title,_that.subtitle);case _:
 @optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String videoId,  String title,  String subtitle)  $default,) {final _that = this;
 switch (_that) {
 case _TrackModel():
-return $default(_that.videoId,_that.title,_that.subtitle);}
+return $default(_that.videoId,_that.title,_that.subtitle);case _:
+  throw StateError('Unexpected subclass');
+
+}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
