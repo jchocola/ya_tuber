@@ -40,6 +40,9 @@ class PlayButtons_when_have_controller extends StatelessWidget {
                 YoutubeValueBuilder(
                   controller: homePageProvider_listen.youtubePlayerController,
                   builder: (context, value) => CustomCircleButton(
+                    isNegative: value.playerState == PlayerState.playing
+                        ? true
+                        : false,
                     onPressed: () {
                       value.playerState == PlayerState.playing
                           ? homePageProvider_read.pauseVideo()
@@ -99,6 +102,9 @@ class PlayButtons_when_have_controller extends StatelessWidget {
                 /// MUTE ON/OFF
                 ///
                 CustomCircleButton(
+                  isNegative:  homePageProvider_listen.isMute == true
+                      ? true
+                      : false,
                   onPressed: () async {
                     homePageProvider_read.isMute
                         ? await homePageProvider_read.unMute()
@@ -144,7 +150,9 @@ class PlayButtons_when_have_controller extends StatelessWidget {
                   ),
                 ),
 
-                CustomCircleButton(onPressed: () {}, icon: AppIcon.unsavedIcon),
+                CustomCircleButton(onPressed: () {}, icon: AppIcon.unsavedIcon, isNegative: true,),
+
+               
               ],
             ),
             VolumeWidget(),
