@@ -49,6 +49,8 @@ dependencies:
   json_annotation: ^4.9.0
   localstore: ^1.4.0
   url_launcher: ^6.3.2
+  audio_service: ^0.18.18
+  just_audio: ^0.10.5
 
 dev_dependencies:
   flutter_test:
