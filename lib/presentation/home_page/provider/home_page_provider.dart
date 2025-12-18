@@ -173,6 +173,17 @@ class HomePageProvider extends ChangeNotifier {
     }
   }
 
+  Future<void> playVideoById({required String videoId}) async {
+    try {
+      _currentVideoUrl = videoId;
+       notifyListeners();
+      await loadVideoInfo();
+
+    } catch (e) {
+      logger.e(e);
+    }
+  }
+
   ///
   ///PRIVATE METHODS
   ///

@@ -6,6 +6,7 @@ import 'package:ya_tuber/core/app_constant.dart';
 import 'package:ya_tuber/core/app_icon.dart';
 import 'package:ya_tuber/core/custom_snackbar.dart';
 import 'package:ya_tuber/core/utils/convert_sec_to_correct_format.dart';
+import 'package:ya_tuber/core/utils/smart_videoId_selector.dart';
 import 'package:ya_tuber/domain/entity/track_entity.dart';
 import 'package:ya_tuber/main.dart';
 import 'package:ya_tuber/presentation/home_page/provider/home_page_provider.dart';
@@ -37,7 +38,23 @@ class PlayButtons_when_have_controller extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 CustomCircleButton(
-                  onPressed: () {},
+                  onPressed: () async{
+                     try {
+                      final nextVideoUrl = SmartVideoIdSelector(
+                        playListIds: playlistProvider_read.listTracks
+                            .map((e) => e.videoId)
+                            .toList(),
+                        isNext: false,
+                        currentVideoId: homePageProvider_read.currentVideoId,
+                      );
+
+                      await homePageProvider_read.playVideoById(
+                        videoId: nextVideoUrl,
+                      );
+                    } catch (e) {
+                      showCustomSnackbar(context, content: e.toString());
+                    }
+                  },
                   icon: AppIcon.skipBackdIcon,
                 ),
 
@@ -65,7 +82,23 @@ class PlayButtons_when_have_controller extends StatelessWidget {
                 ///
                 ///
                 CustomCircleButton(
-                  onPressed: () async {},
+                  onPressed: () async {
+                    try {
+                      final nextVideoUrl = SmartVideoIdSelector(
+                        playListIds: playlistProvider_read.listTracks
+                            .map((e) => e.videoId)
+                            .toList(),
+                        isNext: true,
+                        currentVideoId: homePageProvider_read.currentVideoId,
+                      );
+
+                      await homePageProvider_read.playVideoById(
+                        videoId: nextVideoUrl,
+                      );
+                    } catch (e) {
+                      showCustomSnackbar(context, content: e.toString());
+                    }
+                  },
                   icon: AppIcon.skipForwardIcon,
                 ),
               ],
@@ -177,14 +210,11 @@ class PlayButtons_when_have_controller extends StatelessWidget {
 
                     if (alreadyInPlayList) {
                       // remove from playlist
-                      
-                       showDialog(
-                            context: context,
-                            builder: (context) => ConfirmDeletePage(
-                              track: track,
-                            ),
-                          );
-                     
+
+                      showDialog(
+                        context: context,
+                        builder: (context) => ConfirmDeletePage(track: track),
+                      );
                     } else {
                       // save track
                       await playlistProvider_read.saveTrack(track: track).then((

@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 
+
+// TODO : thumbnail
 class TrackEntity extends Equatable {
   final String videoId;
   final String title;
