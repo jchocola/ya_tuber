@@ -8,6 +8,7 @@ import 'package:ya_tuber/domain/repo/local_store_repo.dart';
 import 'package:ya_tuber/domain/repo/youtube_explode_repo.dart';
 import 'package:ya_tuber/presentation/home_page/home_page.dart';
 import 'package:ya_tuber/presentation/home_page/provider/home_page_provider.dart';
+import 'package:ya_tuber/presentation/playlist_page/provider/playlist_page_provider.dart';
 
 final logger = Logger();
 Future<void> main() async {
@@ -37,6 +38,8 @@ class MyApp extends StatelessWidget {
           create: (context) =>
               HomePageProvider(youtubeExplodeRepo: getIt<YoutubeExplodeRepo>()),
         ),
+
+        ChangeNotifierProvider(create: (context)=> PlaylistPageProvider(localDB: getIt<LocalStoreRepo>())..loadListTracks())
       ],
       child: NeumorphicApp(
         theme: lightTheme,

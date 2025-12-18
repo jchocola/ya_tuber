@@ -25,8 +25,9 @@ class HomePageProvider extends ChangeNotifier {
   bool isMute = false;
   int currentVolume = 70;
   int currentTime = 0;
-  List<double>? playBackRateList = [ -1,-0.5,1, 1.5,2];
+  List<double>? playBackRateList = [-1, -0.5, 1, 1.5, 2];
   double currentPlayBackRate = 1.0;
+  String currentVideoId = '';
 
   YoutubePlayerController? get youtubePlayerController =>
       _youtubePlayerController;
@@ -179,6 +180,9 @@ class HomePageProvider extends ChangeNotifier {
       final videoId = await youtubeExplodeRepo.getVideoIdViaUrl(
         videoUrl: _currentVideoUrl!,
       );
+
+      currentVideoId = videoId;
+
       youtubePlayerController!.loadVideoById(videoId: videoId);
 
       youtubePlayerController!.videoStateStream.listen((data) {

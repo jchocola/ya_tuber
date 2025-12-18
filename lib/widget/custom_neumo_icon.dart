@@ -3,17 +3,18 @@ import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:ya_tuber/core/app_constant.dart';
 
 class CustomNeumoIcon extends StatelessWidget {
-  const CustomNeumoIcon({super.key});
-
+  const CustomNeumoIcon({super.key, this.iconData = Icons.abc_rounded});
+  final IconData iconData;
   @override
   Widget build(BuildContext context) {
-    return NeumorphicIcon(
-      Icons.abc_outlined,
-      curve: AppConstant.neumorphicCurve,
-      size: 30,
+    return Neumorphic(
       style: NeumorphicStyle(
-        color: Colors.amber,
+        //color: Colors.amber,
         depth: AppConstant.neumoDepthPositive,
+      ),
+      child: Padding(
+        padding:  EdgeInsets.all(AppConstant.widgetPadding/2),
+        child: Icon(iconData),
       ),
     );
   }

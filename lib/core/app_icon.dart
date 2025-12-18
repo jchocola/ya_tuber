@@ -31,4 +31,6 @@ class AppIcon {
   static const unsavedIcon = LucideIcons.bookmark300;
 
   static const speedIcon = LucideIcons.gauge300;
+
+  static const audioLinesIcon = LucideIcons.audioLines300;
 }

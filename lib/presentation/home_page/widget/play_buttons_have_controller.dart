@@ -6,9 +6,13 @@ import 'package:ya_tuber/core/app_constant.dart';
 import 'package:ya_tuber/core/app_icon.dart';
 import 'package:ya_tuber/core/custom_snackbar.dart';
 import 'package:ya_tuber/core/utils/convert_sec_to_correct_format.dart';
+import 'package:ya_tuber/domain/entity/track_entity.dart';
+import 'package:ya_tuber/main.dart';
 import 'package:ya_tuber/presentation/home_page/provider/home_page_provider.dart';
 import 'package:ya_tuber/presentation/home_page/widget/playlist_widget.dart';
 import 'package:ya_tuber/presentation/home_page/widget/volume_widget.dart';
+import 'package:ya_tuber/presentation/playlist_page/page/confirm_delete_page.dart';
+import 'package:ya_tuber/presentation/playlist_page/provider/playlist_page_provider.dart';
 import 'package:ya_tuber/widget/custom_circle_button.dart';
 import 'package:ya_tuber/widget/custom_neumo_slider.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
@@ -20,6 +24,9 @@ class PlayButtons_when_have_controller extends StatelessWidget {
   Widget build(BuildContext context) {
     final homePageProvider_read = context.read<HomePageProvider>();
     final homePageProvider_listen = context.watch<HomePageProvider>();
+
+    final playlistProvider_listen = context.watch<PlaylistPageProvider>();
+    final playlistProvider_read = context.read<PlaylistPageProvider>();
     return YoutubePlayerControllerProvider(
       controller: homePageProvider_listen.youtubePlayerController!,
       child: Builder(
@@ -102,7 +109,7 @@ class PlayButtons_when_have_controller extends StatelessWidget {
                 /// MUTE ON/OFF
                 ///
                 CustomCircleButton(
-                  isNegative:  homePageProvider_listen.isMute == true
+                  isNegative: homePageProvider_listen.isMute == true
                       ? true
                       : false,
                   onPressed: () async {
@@ -150,9 +157,51 @@ class PlayButtons_when_have_controller extends StatelessWidget {
                   ),
                 ),
 
-                CustomCircleButton(onPressed: () {}, icon: AppIcon.unsavedIcon, isNegative: true,),
+                CustomCircleButton(
+                  onPressed: () async {
+                    if (homePageProvider_read.video == null) {
+                      showCustomSnackbar(context, content: 'Erorrrrrrrr');
+                      return;
+                    }
 
-               
+                    // generate track
+                    final track = TrackEntity(
+                      videoId: homePageProvider_read.currentVideoId,
+                      title: homePageProvider_read.video?.title ?? '',
+                      subtitle: homePageProvider_read.video?.author ?? '',
+                    );
+                    logger.f(track.toString());
+
+                    final alreadyInPlayList = playlistProvider_read.listTracks
+                        .any((e) => e.videoId == track.videoId);
+
+                    if (alreadyInPlayList) {
+                      // remove from playlist
+                      
+                       showDialog(
+                            context: context,
+                            builder: (context) => ConfirmDeletePage(
+                              track: track,
+                            ),
+                          );
+                     
+                    } else {
+                      // save track
+                      await playlistProvider_read.saveTrack(track: track).then((
+                        _,
+                      ) {
+                        showCustomSnackbar(
+                          context,
+                          content: 'Added to playlist',
+                        );
+                      });
+                    }
+                  },
+                  icon: AppIcon.unsavedIcon,
+                  isNegative: playlistProvider_listen.listTracks.any(
+                    (e) => e.videoId == homePageProvider_listen.currentVideoId,
+                  ),
+                ),
               ],
             ),
             VolumeWidget(),

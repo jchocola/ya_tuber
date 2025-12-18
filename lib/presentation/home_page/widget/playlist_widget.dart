@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
+import 'package:provider/provider.dart';
 import 'package:ya_tuber/core/app_constant.dart';
+import 'package:ya_tuber/presentation/home_page/provider/home_page_provider.dart';
+import 'package:ya_tuber/presentation/playlist_page/provider/playlist_page_provider.dart';
 import 'package:ya_tuber/widget/play_list_card.dart';
 
 class PlaylistWidget extends StatelessWidget {
@@ -8,6 +11,8 @@ class PlaylistWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final playListProvider_listen = context.watch<PlaylistPageProvider>();
+    final homePageProvider_listen = context.watch<HomePageProvider>();
     return Neumorphic(
       child: Theme(
         data: ThemeData(dividerColor: Colors.transparent),
@@ -16,11 +21,14 @@ class PlaylistWidget extends StatelessWidget {
           child: ExpansionTile(
             title: Text('PlayList'),
             childrenPadding: EdgeInsets.all(AppConstant.widgetPadding),
-            children: [
-              PlayListCard(),
-              PlayListCard(isPlaying: true),
-              PlayListCard(),
-            ],
+            children: playListProvider_listen.listTracks.isNotEmpty
+                ? List.generate(playListProvider_listen.listTracks.length, (
+                    index,
+                  ) {
+                    final track = playListProvider_listen.listTracks[index];
+                    return PlayListCard(isSetting: false, track: track, isPlaying: homePageProvider_listen.currentVideoId == track.videoId,);
+                  })
+                : [Text('Empty')],
           ),
         ),
       ),

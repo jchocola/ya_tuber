@@ -3,18 +3,22 @@ import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:ya_tuber/core/app_constant.dart';
 import 'package:ya_tuber/core/app_icon.dart';
 import 'package:ya_tuber/core/light_app_color.dart';
+import 'package:ya_tuber/domain/entity/track_entity.dart';
 import 'package:ya_tuber/presentation/playlist_page/page/confirm_delete_page.dart';
 import 'package:ya_tuber/presentation/playlist_page/page/edit_track_page.dart';
 import 'package:ya_tuber/widget/custom_circle_button.dart';
+import 'package:ya_tuber/widget/custom_neumo_icon.dart';
 
 class PlayListCard extends StatelessWidget {
   const PlayListCard({
     super.key,
     this.isPlaying = false,
     this.isSetting = false,
+    this.track
   });
   final bool isPlaying;
   final bool isSetting;
+  final TrackEntity? track;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,9 +32,9 @@ class PlayListCard extends StatelessWidget {
             depth: isPlaying ? AppConstant.neumoDepthNegative : 0,
           ),
           child: ListTile(
-            leading: Icon(AppIcon.musicIcon),
-            title: Text('Lofi Coding'),
-            subtitle: Text('FocusMusic'),
+            leading: isPlaying ? CustomNeumoIcon(iconData: AppIcon.audioLinesIcon,) :Icon(AppIcon.musicIcon),
+            title: Text(track?.title ?? 'Lofi Coding', maxLines: 3,),
+            subtitle: Text(track?.subtitle ?? 'FocusMusic'),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -40,7 +44,10 @@ class PlayListCard extends StatelessWidget {
                 isSetting
                     ? CustomCircleButton(
                         onPressed: () {
-                           showDialog(context: context, builder: (context)=> EditTrackPage());
+                          showDialog(
+                            context: context,
+                            builder: (context) => EditTrackPage(),
+                          );
                         },
                         icon: AppIcon.editIcon,
                       )
@@ -52,7 +59,12 @@ class PlayListCard extends StatelessWidget {
                 isSetting
                     ? CustomCircleButton(
                         onPressed: () {
-                          showDialog(context: context, builder: (context)=> ConfirmDeletePage());
+                          showDialog(
+                            context: context,
+                            builder: (context) => ConfirmDeletePage(
+                              track: track,
+                            ),
+                          );
                         },
                         icon: AppIcon.deleteIcon,
                       )
