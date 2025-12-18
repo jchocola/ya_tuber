@@ -14,42 +14,45 @@ class PlaylistWidget extends StatelessWidget {
     final playListProvider_listen = context.watch<PlaylistPageProvider>();
     final homePageProvider_listen = context.watch<HomePageProvider>();
     final homePageProvider_read = context.read<HomePageProvider>();
-    return Neumorphic(
-      child: Theme(
-        data: ThemeData(dividerColor: Colors.transparent),
-        child: Padding(
-          padding: EdgeInsetsGeometry.all(AppConstant.widgetPadding),
-          child: ExpansionTile(
-            title: Text('PlayList'),
-            childrenPadding: EdgeInsets.all(AppConstant.widgetPadding),
-            children: playListProvider_listen.listTracks.isNotEmpty
-                ? List.generate(playListProvider_listen.listTracks.length, (
-                    index,
-                  ) {
-                    final track = playListProvider_listen.listTracks[index];
-                    return PlayListCard(
-                      isSetting: false,
-                      track: track,
-                      isPlaying:
-                          homePageProvider_listen.currentVideoId ==
-                          track.videoId,
-                      onTap: () async {
-                        ///
-                        /// IF CURRENT PLAY VIDEO , THEN DONT NOPTHING
-                        ///
-                        if (homePageProvider_read.currentVideoId ==
-                            track.videoId) {
-                          return;
-                        } else {
-                           await homePageProvider_read.playTrackFromPlayList(
-                          track: track,
-                        );
-                        }
-                       
-                      },
-                    );
-                  })
-                : [Text('Empty')],
+    return Transform.scale(
+scale: 0.85,
+      child: Neumorphic(
+        child: Theme(
+          data: ThemeData(dividerColor: Colors.transparent),
+          child: Padding(
+            padding: EdgeInsetsGeometry.all(AppConstant.widgetPadding),
+            child: ExpansionTile(
+              title: Text('PlayList'),
+              childrenPadding: EdgeInsets.all(AppConstant.widgetPadding),
+              children: playListProvider_listen.listTracks.isNotEmpty
+                  ? List.generate(playListProvider_listen.listTracks.length, (
+                      index,
+                    ) {
+                      final track = playListProvider_listen.listTracks[index];
+                      return PlayListCard(
+                        isSetting: false,
+                        track: track,
+                        isPlaying:
+                            homePageProvider_listen.currentVideoId ==
+                            track.videoId,
+                        onTap: () async {
+                          ///
+                          /// IF CURRENT PLAY VIDEO , THEN DONT NOPTHING
+                          ///
+                          if (homePageProvider_read.currentVideoId ==
+                              track.videoId) {
+                            return;
+                          } else {
+                             await homePageProvider_read.playTrackFromPlayList(
+                            track: track,
+                          );
+                          }
+                         
+                        },
+                      );
+                    })
+                  : [Text('Empty')],
+            ),
           ),
         ),
       ),
