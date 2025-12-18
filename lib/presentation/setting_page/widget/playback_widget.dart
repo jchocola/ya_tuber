@@ -12,7 +12,9 @@ class PlaybackWidget extends StatelessWidget {
       spacing: AppConstant.widgetPadding,
       children: [
         Text('Playback'),
-        SettingTitle()
+        SettingTitle(title: 'Auto Play Next',subTitle: 'Automatically play next track in playlist',withSwitch: true,onPressed: () {
+          
+        },)
       ],
     );
   }

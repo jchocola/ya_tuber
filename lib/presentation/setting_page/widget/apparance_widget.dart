@@ -12,7 +12,12 @@ class AppareanceWidget extends StatelessWidget {
       spacing: AppConstant.widgetPadding,
       children: [
         Text('Appearance'),
-        SettingTitle()
+        SettingTitle(title: 'Theme',withSwitch: true, onPressed: () {
+          
+        },),
+        SettingTitle(title: 'Language',onPressed: () {
+          
+        },),
       ],
     );
   }

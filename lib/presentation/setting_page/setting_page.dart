@@ -21,7 +21,7 @@ class SettingPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: AppConstant.appPadding,
         children: [
-          AudioQualityWidget(),
+         // AudioQualityWidget(),
           PlaybackWidget(),
           AppareanceWidget(),
           AboutWidget()
