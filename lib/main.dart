@@ -6,7 +6,8 @@ import 'package:logger/web.dart';
 import 'package:provider/provider.dart';
 import 'package:ya_tuber/app_setting_provider.dart';
 import 'package:ya_tuber/core/di.dart';
-import 'package:ya_tuber/core/light_theme.dart';
+import 'package:ya_tuber/core/theme/dark_theme.dart';
+import 'package:ya_tuber/core/theme/light_theme.dart';
 import 'package:ya_tuber/domain/repo/app_setting_repo.dart';
 import 'package:ya_tuber/domain/repo/local_store_repo.dart';
 import 'package:ya_tuber/domain/repo/youtube_explode_repo.dart';
@@ -71,7 +72,7 @@ class MyApp extends StatelessWidget {
           ],
           supportedLocales: S.delegate.supportedLocales,
           locale: Locale(setting.langCode),
-          theme: lightTheme,
+          theme:  setting.appThemeLight ? darkTheme : lightTheme,
           debugShowCheckedModeBanner: false,
           title: 'Ya Tuber',
           home: HomePage(),

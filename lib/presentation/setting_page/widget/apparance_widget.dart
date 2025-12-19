@@ -67,7 +67,7 @@ class AppareanceWidget extends StatelessWidget {
           withSwitch: true,
           switchValue: appSettingProvider_listen.appThemeLight,
           onPressed: () async {
-           // await appSettingProvider_read.tooggleThemeValue();
+            await appSettingProvider_read.tooggleThemeValue();
           },
           subTitle: 'Use dark theme (coming soon)',
         ),

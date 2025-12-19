@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:ya_tuber/core/app_constant.dart';
-import 'package:ya_tuber/core/light_app_color.dart';
+import 'package:ya_tuber/core/theme/light_app_color.dart';
 import 'package:ya_tuber/widget/custom_circle_button.dart';
 
 class CustomInput extends StatelessWidget {
