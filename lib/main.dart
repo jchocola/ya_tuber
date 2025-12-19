@@ -73,7 +73,7 @@ class MyApp extends StatelessWidget {
           locale: Locale(setting.langCode),
           theme: setting.currentAppTheme,
           debugShowCheckedModeBanner: false,
-          title: 'Ya Tuber',
+          title: S.of(context).yatube,
           home: HomePage(),
         ),
       ),
