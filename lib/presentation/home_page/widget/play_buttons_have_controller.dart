@@ -28,6 +28,7 @@ class PlayButtons_when_have_controller extends StatelessWidget {
 
     final playlistProvider_listen = context.watch<PlaylistPageProvider>();
     final playlistProvider_read = context.read<PlaylistPageProvider>();
+    final theme = Theme.of(context);
     return YoutubePlayerControllerProvider(
       controller: homePageProvider_listen.youtubePlayerController!,
       child: Builder(
@@ -181,7 +182,7 @@ class PlayButtons_when_have_controller extends StatelessWidget {
                         isDefaultAction:
                             value ==
                             homePageProvider_listen.currentPlayBackRate,
-                        child: Text('$value'),
+                        child: Text('$value', style: value ==  homePageProvider_listen.currentPlayBackRate ? theme.textTheme.titleMedium : theme.textTheme.bodyMedium),
                       );
                     },
                   ),
