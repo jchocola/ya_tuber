@@ -14,6 +14,11 @@ class PlaybackWidget extends StatelessWidget {
         Text('Playback'),
         SettingTitle(title: 'Auto Play Next',subTitle: 'Automatically play next track in playlist',withSwitch: true,onPressed: () {
           
+        },),
+
+
+         SettingTitle(title: 'Background Play',subTitle: 'Automatically play next track in playlist',withSwitch: true,onPressed: () {
+          
         },)
       ],
     );
