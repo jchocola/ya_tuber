@@ -37,58 +37,49 @@ class PlayListCard extends StatelessWidget {
               lightSource: LightSource.topLeft,
               depth: isPlaying ? AppConstant.neumoDepthNegative : 0,
             ),
-            child: Theme(
-              data: ThemeData(
-                listTileTheme: ListTileThemeData(
-                  titleAlignment: ListTileTitleAlignment.top,
-                  horizontalTitleGap: 10,
-                  contentPadding: EdgeInsets.only(left: AppConstant.widgetPadding/2, right: 0)
-                )
-              ),
-              child: ListTile(
-                leading:  isPlaying ? RotatingWidget(child:CustomSmallThumbnail(imageUrl: track?.thumbnail,) ) :  CustomSmallThumbnail(imageUrl: track?.thumbnail,),
-                title: Text(track?.title ?? 'Lofi Coding', maxLines: 3, style: theme.textTheme.bodyMedium,),
-                subtitle: Text(track?.subtitle ?? 'FocusMusic', style: theme.textTheme.bodySmall,),
-            
-                trailing: Transform.scale(
-                  scale: 0.8,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      ///
-                      /// EDIT
-                      ///
-                      isSetting
-                          ? CustomCircleButton(
-                              onPressed: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (context) => EditTrackPage(track: track,),
-                                );
-                              },
-                              icon: AppIcon.editIcon,
-                            )
-                          : SizedBox(),
-                          
-                      ///
-                      /// DELETE
-                      ///
-                      isSetting
-                          ? CustomCircleButton(
-                              onPressed: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (context) => ConfirmDeletePage(
-                                    track: track,
-                                  ),
-                                );
-                              },
-                              icon: AppIcon.deleteIcon,
-                            )
-                          : SizedBox(),
-                    ],
-                  ),
+            child: ListTile(
+              leading:  isPlaying ? RotatingWidget(child:CustomSmallThumbnail(imageUrl: track?.thumbnail,) ) :  CustomSmallThumbnail(imageUrl: track?.thumbnail,),
+              title: Text(track?.title ?? 'Lofi Coding', maxLines: 3, style: theme.textTheme.bodyMedium,),
+              subtitle: Text(track?.subtitle ?? 'FocusMusic', style: theme.textTheme.bodySmall,),
+                        
+              trailing: Transform.scale(
+                scale: 0.8,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    ///
+                    /// EDIT
+                    ///
+                    isSetting
+                        ? CustomCircleButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) => EditTrackPage(track: track,),
+                              );
+                            },
+                            icon: AppIcon.editIcon,
+                          )
+                        : SizedBox(),
+                        
+                    ///
+                    /// DELETE
+                    ///
+                    isSetting
+                        ? CustomCircleButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) => ConfirmDeletePage(
+                                  track: track,
+                                ),
+                              );
+                            },
+                            icon: AppIcon.deleteIcon,
+                          )
+                        : SizedBox(),
+                  ],
                 ),
               ),
             ),

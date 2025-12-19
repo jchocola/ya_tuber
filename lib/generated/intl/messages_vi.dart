@@ -22,46 +22,50 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "about": MessageLookupByLibrary.simpleMessage("About"),
-    "appVersion": MessageLookupByLibrary.simpleMessage("App Version"),
-    "appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
-    "artistChannel": MessageLookupByLibrary.simpleMessage("Artist / Channel"),
-    "autoPlayNext": MessageLookupByLibrary.simpleMessage("Auto Play Next"),
+    "about": MessageLookupByLibrary.simpleMessage("Về chúng tôi"),
+    "appVersion": MessageLookupByLibrary.simpleMessage("Phiên bản ứng dụng"),
+    "appearance": MessageLookupByLibrary.simpleMessage("Hình thức"),
+    "artistChannel": MessageLookupByLibrary.simpleMessage("Nghệ sĩ / Kênh"),
+    "autoPlayNext": MessageLookupByLibrary.simpleMessage(
+      "Tự động phát tiếp theo",
+    ),
     "automaticallyPlayNextTrackInPlaylist":
         MessageLookupByLibrary.simpleMessage(
-          "Automatically play next track in playlist",
+          "Tự động phát bài hát tiếp theo trong danh sách phát",
         ),
     "automaticallyPlayOnBackground": MessageLookupByLibrary.simpleMessage(
-      "Automatically play on background",
+      "Tự động phát ở chế độ nền",
     ),
-    "backgroundPlay": MessageLookupByLibrary.simpleMessage("Background Play"),
-    "build": MessageLookupByLibrary.simpleMessage("Build"),
-    "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "backgroundPlay": MessageLookupByLibrary.simpleMessage("Phát nhạc nền"),
+    "build": MessageLookupByLibrary.simpleMessage("Ngày sản xuất"),
+    "cancel": MessageLookupByLibrary.simpleMessage("Hủy"),
     "changesWillBeSavedToYourLocalPlaylist":
         MessageLookupByLibrary.simpleMessage(
-          "Changes will be saved to your local playlist",
+          "Các thay đổi sẽ được lưu vào danh sách phát cục bộ của bạn.",
         ),
-    "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
-    "deleteTrack": MessageLookupByLibrary.simpleMessage("Delete Track?"),
-    "developer": MessageLookupByLibrary.simpleMessage("Developer"),
-    "editTrack": MessageLookupByLibrary.simpleMessage("Edit Track"),
-    "language": MessageLookupByLibrary.simpleMessage("Language"),
+    "confirm": MessageLookupByLibrary.simpleMessage("Xác nhận"),
+    "deleteTrack": MessageLookupByLibrary.simpleMessage("Xóa bài hát?"),
+    "developer": MessageLookupByLibrary.simpleMessage("Nhà phát triển"),
+    "editTrack": MessageLookupByLibrary.simpleMessage("Chỉnh sửa bản nhạc"),
+    "language": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
     "pastYoutubeLink": MessageLookupByLibrary.simpleMessage(
-      "Past Youtube link...",
+      "Liên kết YouTube...",
     ),
-    "playback": MessageLookupByLibrary.simpleMessage("Playback"),
-    "playlist": MessageLookupByLibrary.simpleMessage("Playlist"),
-    "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
-    "settings": MessageLookupByLibrary.simpleMessage("Settings"),
-    "termOfServices": MessageLookupByLibrary.simpleMessage("Term of Services"),
-    "theme": MessageLookupByLibrary.simpleMessage("Theme"),
+    "playback": MessageLookupByLibrary.simpleMessage("Phát lại"),
+    "playlist": MessageLookupByLibrary.simpleMessage("Danh sách phát"),
+    "privacyPolicy": MessageLookupByLibrary.simpleMessage("Chính sách bảo mật"),
+    "settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
+    "termOfServices": MessageLookupByLibrary.simpleMessage(
+      "Điều khoản dịch vụ",
+    ),
+    "theme": MessageLookupByLibrary.simpleMessage("Chủ đề"),
     "thisActionCannotBeUndoneTheTrackWillBePermanently":
         MessageLookupByLibrary.simpleMessage(
-          "This action cannot be undone. The track will be permanently removed from your playlist.",
+          "Hành động này không thể hoàn tác. Bài hát sẽ bị xóa vĩnh viễn khỏi danh sách phát của bạn.",
         ),
-    "trackTitle": MessageLookupByLibrary.simpleMessage("Track Title"),
+    "trackTitle": MessageLookupByLibrary.simpleMessage("Tên bài hát"),
     "updateTheTrackInformationBelow": MessageLookupByLibrary.simpleMessage(
-      "Update the track information below",
+      "Cập nhật thông tin bài hát bên dưới",
     ),
     "yatube": MessageLookupByLibrary.simpleMessage("YaTube"),
   };

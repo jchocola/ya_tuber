@@ -17,6 +17,8 @@ final greenTheme = NeumorphicThemeData(
     color: Color(0xFF5F7F6C),
   ),
 
+  borderColor: Color(0xFF5F7F6C),
+
   /// Текст
   textTheme: TextTheme(
     bodyMedium:  appTextStyle.copyWith(

@@ -28,7 +28,7 @@ class BigButton extends StatelessWidget {
           horizontal: AppConstant.widgetPadding,
           vertical: AppConstant.widgetPadding / 2,
         ),
-        child: Text(title, style: theme.textTheme.bodySmall,),
+        child: Text(title, style: theme.textTheme.bodySmall, maxLines: 2,),
       ),
     );
   }
