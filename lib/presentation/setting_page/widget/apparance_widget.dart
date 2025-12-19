@@ -69,7 +69,7 @@ class AppareanceWidget extends StatelessWidget {
           onPressed: () async {
             await appSettingProvider_read.tooggleThemeValue();
           },
-          subTitle: 'Use dark theme (coming soon)',
+          subTitle: appSettingProvider_listen.appTheme,
         ),
         SettingTitle(
           title: 'Language',

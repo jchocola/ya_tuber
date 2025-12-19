@@ -26,6 +26,8 @@ class AppSettingProvider extends ChangeNotifier {
     langCode = await settingRepo.getAppLangCode();
     appTheme = await settingRepo.getThemeParameter();
 
+    final index = THEME_LIST.indexOf(appTheme);
+    currentAppTheme = THEME_LIST_DATA[index];
     notifyListeners();
   }
 
