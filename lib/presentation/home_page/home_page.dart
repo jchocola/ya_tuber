@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:gap/gap.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:provider/provider.dart';
 import 'package:ya_tuber/core/app_constant.dart';
 import 'package:ya_tuber/core/app_icon.dart';
 import 'package:ya_tuber/core/custom_snackbar.dart';
-import 'package:ya_tuber/data/repo/youtube_explode_impl.dart';
+import 'package:ya_tuber/main.dart';
 import 'package:ya_tuber/presentation/home_page/provider/home_page_provider.dart';
 import 'package:ya_tuber/presentation/home_page/widget/info_widget.dart';
 import 'package:ya_tuber/presentation/home_page/widget/play_buttons_have_controller.dart';
@@ -14,11 +14,63 @@ import 'package:ya_tuber/presentation/home_page/widget/playlist_widget.dart';
 import 'package:ya_tuber/widget/custom_circle_button.dart';
 import 'package:ya_tuber/widget/custom_input.dart';
 import 'package:ya_tuber/presentation/home_page/widget/custom_homepage_appbar.dart';
-import 'package:ya_tuber/widget/custom_neumo_icon.dart';
-import 'package:ya_tuber/widget/custom_neumo_text.dart';
 
-class HomePage extends StatelessWidget {
+
+
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+
+    switch (state) {
+      case AppLifecycleState.resumed:
+        logger.e('Приложение активно и видимо');
+        // Приложение вернулось на передний план
+        // _onAppResumed();
+        break;
+
+      case AppLifecycleState.inactive:
+        logger.e('Приложение неактивно (но видимо)');
+        // Например: уведомление поверх приложения, мультитаск
+        break;
+
+      case AppLifecycleState.paused:
+        logger.e('Приложение в фоновом режиме');
+        // Приложение свернуто или перешло в фон
+        //_onAppPaused();
+        context.read<HomePageProvider>().playVideo();
+        break;
+
+      case AppLifecycleState.detached:
+        logger.e('Приложение уничтожено');
+        // Приложение полностью закрыто (только Android)
+        break;
+
+      case AppLifecycleState.hidden:
+        logger.e('Приложение скрыто');
+        // Новое состояние в Flutter 3.13+
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +96,7 @@ class HomePage extends StatelessWidget {
 
   Widget buildBody(BuildContext context) {
     final homePageProvider_listen = context.watch<HomePageProvider>();
+    final homePageProvider_read = context.read<HomePageProvider>();
     return Padding(
       padding: EdgeInsetsGeometry.all(AppConstant.appPadding),
       child: SingleChildScrollView(
@@ -80,7 +133,9 @@ class HomePage extends StatelessWidget {
               ],
             ),
             Gap(AppConstant.appPadding),
-            homePageProvider_listen.youtubePlayerController !=null ? PlayButtons_when_have_controller() : PlayButtons_when_not_controller(),
+            homePageProvider_listen.youtubePlayerController != null
+                ? PlayButtons_when_have_controller()
+                : PlayButtons_when_not_controller(),
             PlaylistWidget(),
           ],
         ),
