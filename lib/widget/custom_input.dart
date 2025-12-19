@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:ya_tuber/app_setting_provider.dart';
 import 'package:ya_tuber/core/app_constant.dart';
 
-
 class CustomInput extends StatelessWidget {
   const CustomInput({
     super.key,
@@ -18,7 +17,7 @@ class CustomInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appSettingProvider_listen = context.watch<AppSettingProvider>();
-
+    final theme = Theme.of(context);
     return Neumorphic(
       style: NeumorphicStyle(depth: AppConstant.neumoDepthNegative),
       child: Padding(
@@ -26,17 +25,22 @@ class CustomInput extends StatelessWidget {
         child: Theme(
           data: ThemeData(
             textSelectionTheme: TextSelectionThemeData(
-              selectionColor: appSettingProvider_listen.currentAppTheme.accentColor,
-              selectionHandleColor:  appSettingProvider_listen.currentAppTheme.accentColor,
+              selectionColor:
+                  appSettingProvider_listen.currentAppTheme.accentColor,
+              selectionHandleColor:
+                  appSettingProvider_listen.currentAppTheme.accentColor,
             ),
           ),
           child: TextField(
             onChanged: onChanged,
             controller: controller,
-            cursorColor:  appSettingProvider_listen.currentAppTheme.accentColor,
+            cursorColor: appSettingProvider_listen.currentAppTheme.accentColor,
             mouseCursor: MouseCursor.defer,
+            style:  theme.textTheme.titleMedium,
             decoration: InputDecoration(
-              hoverColor:  appSettingProvider_listen.currentAppTheme.accentColor,
+            
+              hintStyle: theme.textTheme.bodySmall,
+              hoverColor: appSettingProvider_listen.currentAppTheme.accentColor,
               hintText: hintText,
               border: UnderlineInputBorder(borderSide: BorderSide.none),
             ),

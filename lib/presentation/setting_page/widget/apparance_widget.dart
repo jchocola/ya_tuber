@@ -14,7 +14,7 @@ class AppareanceWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final appSettingProvider_listen = context.watch<AppSettingProvider>();
     final appSettingProvider_read = context.read<AppSettingProvider>();
-
+    final theme = Theme.of(context);
     void onLanguageTapped() {
       showDialog(
         context: context,
@@ -26,7 +26,7 @@ class AppareanceWidget extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 spacing: AppConstant.appPadding,
                 children: [
-                  Text('Language'),
+                  Text('Language', style: theme.textTheme.titleMedium),
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -61,7 +61,7 @@ class AppareanceWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: AppConstant.widgetPadding,
       children: [
-        Text('Appearance'),
+        Text('Appearance', style: theme.textTheme.titleMedium),
         SettingTitle(
           title: 'Theme',
           //withSwitch: true,

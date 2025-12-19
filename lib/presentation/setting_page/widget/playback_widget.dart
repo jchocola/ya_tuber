@@ -11,11 +11,12 @@ class PlaybackWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final appSettingProvider_listen = context.watch<AppSettingProvider>();
     final appSettingProvider_read = context.read<AppSettingProvider>();
+    final theme = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: AppConstant.widgetPadding,
       children: [
-        Text('Playback'),
+        Text('Playback' , style: theme.textTheme.titleMedium,),
         SettingTitle(
           title: 'Auto Play Next',
           subTitle: 'Automatically play next track in playlist',

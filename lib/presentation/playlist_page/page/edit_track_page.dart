@@ -40,6 +40,8 @@ class _EditTrackPageState extends State<EditTrackPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
+    final theme = Theme.of(context);
     return Dialog(
       child: Neumorphic(
         child: Padding(
@@ -50,13 +52,13 @@ class _EditTrackPageState extends State<EditTrackPage> {
               spacing: AppConstant.widgetPadding,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text('Edit Track'),
-                Text('Update the track information below'),
-                Gap(AppConstant.widgetPadding),
-                Text('Track Title'),
-                CustomInput(controller: titleController),
+                Text('Edit Track' , style: theme.textTheme.titleLarge,),
+                Text('Update the track information below' , style: theme.textTheme.bodySmall,),
+                //Gap(AppConstant.widgetPadding),
+                Text('Track Title', style: theme.textTheme.bodyMedium,),
+                CustomInput(controller: titleController , ),
 
-                Text('Artist / Channel'),
+                Text('Artist / Channel', style: theme.textTheme.bodyMedium,),
                 CustomInput(controller: subTitleController),
 
                 Divider(),
@@ -80,7 +82,7 @@ class _EditTrackPageState extends State<EditTrackPage> {
                             videoId: widget.track!.videoId,
                             title: titleController.text,
                             subtitle: subTitleController.text,
-                            thumbnail: widget.track!.thumbnail
+                            thumbnail: widget.track!.thumbnail,
                           );
 
                           Navigator.pop(context);
@@ -97,7 +99,7 @@ class _EditTrackPageState extends State<EditTrackPage> {
                   ],
                 ),
 
-                Text('Changes will be saved to your local playlist'),
+                Text('Changes will be saved to your local playlist' , style: theme.textTheme.bodySmall,),
               ],
             ),
           ),

@@ -10,13 +10,13 @@ class AboutWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: AppConstant.widgetPadding,
       children: [
-        Text('About'),
+        Text('About', style: theme.textTheme.titleMedium),
         Neumorphic(
-         
           child: Padding(
             padding: EdgeInsets.all(AppConstant.widgetPadding),
             child: Column(
@@ -39,16 +39,17 @@ class AboutWidget extends StatelessWidget {
                   children: [
                     Expanded(
                       child: BigButton(
-                        
-                        title: 'Term of Services', onPressed: () async{
-                         if (!await launchUrl(
+                        title: 'Term of Services',
+                        onPressed: () async {
+                          if (!await launchUrl(
                             Uri.parse(AppConstant.termOfService),
                           )) {
                             throw Exception(
                               'Could not launch ${AppConstant.termOfService}',
                             );
                           }
-                      }),
+                        },
+                      ),
                     ),
                     Expanded(
                       child: BigButton(
@@ -80,9 +81,10 @@ class AboutWidget extends StatelessWidget {
     String title = 'Title',
     String value = 'Value',
   }) {
+      final theme = Theme.of(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [Text(title), Text(value)],
+      children: [Text(title , style: theme.textTheme.bodySmall), Text(value, style: theme.textTheme.bodyMedium)],
     );
   }
 }

@@ -24,6 +24,7 @@ class PlayListCard extends StatelessWidget {
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
+      final theme = Theme.of(context);
     return Padding(
       padding: EdgeInsetsGeometry.symmetric(
         vertical: AppConstant.widgetPadding,
@@ -46,8 +47,8 @@ class PlayListCard extends StatelessWidget {
               ),
               child: ListTile(
                 leading:  isPlaying ? RotatingWidget(child:CustomSmallThumbnail(imageUrl: track?.thumbnail,) ) :  CustomSmallThumbnail(imageUrl: track?.thumbnail,),
-                title: Text(track?.title ?? 'Lofi Coding', maxLines: 3,),
-                subtitle: Text(track?.subtitle ?? 'FocusMusic'),
+                title: Text(track?.title ?? 'Lofi Coding', maxLines: 3, style: theme.textTheme.bodyMedium,),
+                subtitle: Text(track?.subtitle ?? 'FocusMusic', style: theme.textTheme.bodySmall,),
             
                 trailing: Transform.scale(
                   scale: 0.8,

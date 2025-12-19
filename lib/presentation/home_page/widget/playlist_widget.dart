@@ -14,6 +14,7 @@ class PlaylistWidget extends StatelessWidget {
     final playListProvider_listen = context.watch<PlaylistPageProvider>();
     final homePageProvider_listen = context.watch<HomePageProvider>();
     final homePageProvider_read = context.read<HomePageProvider>();
+     final theme = Theme.of(context);
     return Transform.scale(
 scale: 0.85,
       child: Neumorphic(
@@ -22,7 +23,7 @@ scale: 0.85,
           child: Padding(
             padding: EdgeInsetsGeometry.all(AppConstant.widgetPadding),
             child: ExpansionTile(
-              title: Text('PlayList'),
+              title: Text('PlayList', style: theme.textTheme.titleMedium,),
               childrenPadding: EdgeInsets.all(AppConstant.widgetPadding),
               children: playListProvider_listen.listTracks.isNotEmpty
                   ? List.generate(playListProvider_listen.listTracks.length, (

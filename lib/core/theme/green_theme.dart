@@ -28,5 +28,9 @@ const greenTheme = NeumorphicThemeData(
       color: Color(0xFF4F6659),
       fontWeight: FontWeight.w600,
     ),
+     titleLarge: TextStyle(
+      color: Color(0xFF4F6659),
+      fontWeight: FontWeight.w600,
+    ),
   ),
 );

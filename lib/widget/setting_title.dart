@@ -18,6 +18,7 @@ class SettingTitle extends StatelessWidget {
   final bool switchValue;
   @override
   Widget build(BuildContext context) {
+      final theme = Theme.of(context);
     return NeumorphicButton(
       onPressed: onPressed,
       child: Padding(
@@ -27,7 +28,7 @@ class SettingTitle extends StatelessWidget {
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [Text(title), Text(subTitle)],
+                children: [Text(title, style: theme.textTheme.bodyMedium,), Text(subTitle, style: theme.textTheme.bodySmall,)],
               ),
             ),
             withSwitch

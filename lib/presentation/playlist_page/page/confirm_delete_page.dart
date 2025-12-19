@@ -15,6 +15,7 @@ class ConfirmDeletePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final playlistPageProvider_read = context.read<PlaylistPageProvider>();
+     final theme = Theme.of(context);
     return Dialog(
       child: Neumorphic(
         child: Padding(
@@ -22,10 +23,12 @@ class ConfirmDeletePage extends StatelessWidget {
           child: Column(
             spacing: AppConstant.widgetPadding,
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Delete Track?'),
+              Text('Delete Track?' , style: theme.textTheme.titleLarge,),
               Text(
                 'This action cannot be undone. The track will be permanently removed from your playlist.',
+                style:  theme.textTheme.bodySmall,
               ),
               PlayListCard(isPlaying: true, track: track),
 
