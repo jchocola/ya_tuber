@@ -1,6 +1,7 @@
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
+import 'package:ya_tuber/core/theme/theme_list.dart';
 
-const pinkTheme = NeumorphicThemeData(
+ final pinkTheme = NeumorphicThemeData(
   /// Основной фон
   baseColor: Color(0xFFF1ECF3),
 
@@ -18,17 +19,17 @@ const pinkTheme = NeumorphicThemeData(
 
   /// Текст
   textTheme: TextTheme(
-    bodyMedium: TextStyle(
+    bodyMedium: appTextStyle.copyWith (
       color: Color(0xFF7A6A78),
     ),
-    bodySmall: TextStyle(
+    bodySmall: appTextStyle.copyWith(
       color: Color(0xFF9B8A98),
     ),
-    titleMedium: TextStyle(
+    titleMedium: appTextStyle.copyWith(
       color: Color(0xFF6A5A68),
       fontWeight: FontWeight.w600,
     ),
-     titleLarge: TextStyle(
+     titleLarge: appTextStyle.copyWith(
       color: Color(0xFF6A5A68),
       fontSize: 20,
       fontWeight: FontWeight.w700,

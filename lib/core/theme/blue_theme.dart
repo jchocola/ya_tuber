@@ -1,6 +1,7 @@
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
+import 'package:ya_tuber/core/theme/theme_list.dart';
 
-const blueTheme = NeumorphicThemeData(
+final blueTheme = NeumorphicThemeData(
   baseColor: Color(0xFFE9EEF6),
   accentColor: Color(0xFFF2F5FB),
   variantColor: Color(0xFFE1E7F0),
@@ -9,34 +10,34 @@ const blueTheme = NeumorphicThemeData(
 
   textTheme: TextTheme(
     /// Основной текст
-    bodyMedium: TextStyle(
+    bodyMedium: appTextStyle.copyWith(
       color: Color(0xFF5A6B80),
       fontSize: 14,
       height: 1.4,
     ),
 
     /// Вторичный текст / подсказки
-    bodySmall: TextStyle(
+    bodySmall: appTextStyle.copyWith(
       color: Color(0xFF8A99AD),
       fontSize: 12,
     ),
 
     /// Заголовки карточек
-    titleMedium: TextStyle(
+    titleMedium: appTextStyle.copyWith(
       color: Color(0xFF44556A),
       fontSize: 16,
       fontWeight: FontWeight.w600,
     ),
 
     /// Крупные заголовки
-    titleLarge: TextStyle(
+    titleLarge: appTextStyle.copyWith(
       color: Color(0xFF35465D),
       fontSize: 20,
       fontWeight: FontWeight.w700,
     ),
 
     /// Кнопки / CTA
-    labelLarge: TextStyle(
+    labelLarge: appTextStyle.copyWith(
       color: Color(0xFF50627A),
       fontSize: 14,
       fontWeight: FontWeight.w600,

@@ -1,6 +1,7 @@
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
+import 'package:ya_tuber/core/theme/theme_list.dart';
 
-const orangeTheme = NeumorphicThemeData(
+final orangeTheme = NeumorphicThemeData(
   /// Основной фон
   baseColor: Color(0xFFF6EFE9),
 
@@ -18,17 +19,17 @@ const orangeTheme = NeumorphicThemeData(
 
   /// Текст
   textTheme: TextTheme(
-    bodyMedium: TextStyle(
+    bodyMedium:  appTextStyle.copyWith(
       color: Color(0xFF7A5A45),
     ),
-    bodySmall: TextStyle(
+    bodySmall:  appTextStyle.copyWith(
       color: Color(0xFF9C7A63),
     ),
-    titleMedium: TextStyle(
+    titleMedium:  appTextStyle.copyWith(
       color: Color(0xFF6B4E3C),
       fontWeight: FontWeight.w600,
     ),
-      titleLarge: TextStyle(
+      titleLarge:  appTextStyle.copyWith(
       color: Color(0xFF6B4E3C),
       fontWeight: FontWeight.w700,
     ),

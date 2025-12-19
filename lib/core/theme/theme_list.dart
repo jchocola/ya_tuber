@@ -1,4 +1,5 @@
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ya_tuber/core/theme/black_theme.dart';
 import 'package:ya_tuber/core/theme/blue_theme.dart';
 import 'package:ya_tuber/core/theme/brown_theme.dart';
@@ -11,8 +12,30 @@ import 'package:ya_tuber/core/theme/white_theme.dart';
 import 'package:ya_tuber/core/theme/yellow_theme.dart';
 import 'package:ya_tuber/main.dart';
 
-List<String> THEME_LIST = ['WHITE', 'BLUE', 'PINK','ORANGE','PURPLE', 'GREEN','YELLOW','BROWN','RED'];
-List<NeumorphicThemeData> THEME_LIST_DATA = [whiteTheme, blueTheme, pinkTheme,orangeTheme,purpleTheme,greenTheme,yellowTheme,brownTheme,redTheme];
+final appTextStyle = GoogleFonts.ubuntuMono();
+
+List<String> THEME_LIST = [
+  'WHITE',
+  'BLUE',
+  'PINK',
+  'ORANGE',
+  'PURPLE',
+  'GREEN',
+  'YELLOW',
+  'BROWN',
+  'RED',
+];
+List<NeumorphicThemeData> THEME_LIST_DATA = [
+  whiteTheme,
+  blueTheme,
+  pinkTheme,
+  orangeTheme,
+  purpleTheme,
+  greenTheme,
+  yellowTheme,
+  brownTheme,
+  redTheme,
+];
 
 int getNextThemeValueIndex({required String currentValue}) {
   if (!THEME_LIST.contains(currentValue)) {
@@ -21,6 +44,6 @@ int getNextThemeValueIndex({required String currentValue}) {
   } else {
     final index = THEME_LIST.indexOf(currentValue);
 
-    return ((index + 1) % THEME_LIST.length) ;
+    return ((index + 1) % THEME_LIST.length);
   }
 }
