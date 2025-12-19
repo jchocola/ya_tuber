@@ -51,4 +51,16 @@ class SharedPrefAppSettingImpl implements AppSettingRepo {
     await prefs.setBool(APP_THEME_LIGHT, !currentValue);
     logger.i('Changed app theme ${!currentValue}');
   }
+  
+  @override
+  Future<bool> getBackgroundPlayParameter() async{
+     return prefs.getBool(BACKGROUND_PLAY) ?? true; 
+  }
+  
+  @override
+  Future<void> toogleBackgroundPlayParameter() async{
+    final currentValue = await getBackgroundPlayParameter();
+    await prefs.setBool(BACKGROUND_PLAY, !currentValue);
+    logger.i('Changed nackground play ${!currentValue}');
+  }
 }

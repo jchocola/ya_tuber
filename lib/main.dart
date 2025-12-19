@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:logger/web.dart';
 import 'package:provider/provider.dart';
+import 'package:ya_tuber/app_setting_provider.dart';
 import 'package:ya_tuber/core/di.dart';
 import 'package:ya_tuber/core/light_theme.dart';
+import 'package:ya_tuber/domain/repo/app_setting_repo.dart';
 import 'package:ya_tuber/domain/repo/local_store_repo.dart';
 import 'package:ya_tuber/domain/repo/youtube_explode_repo.dart';
 import 'package:ya_tuber/presentation/home_page/home_page.dart';
@@ -34,6 +36,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (context)=> AppSettingProvider(settingRepo: getIt<AppSettingRepo>())..init()),
         ChangeNotifierProvider(
           create: (context) =>
               HomePageProvider(youtubeExplodeRepo: getIt<YoutubeExplodeRepo>()),

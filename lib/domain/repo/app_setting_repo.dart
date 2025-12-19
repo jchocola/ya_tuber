@@ -7,6 +7,9 @@ abstract class AppSettingRepo {
   Future<void> toogleThemeParameter();
   Future<bool> getThemeParameter();
 
+   Future<void> toogleBackgroundPlayParameter();
+   Future<bool> getBackgroundPlayParameter();
+
   Future<void> changeAppLangCode({required String langCode});
   Future<String> getAppLangCode();
 }
