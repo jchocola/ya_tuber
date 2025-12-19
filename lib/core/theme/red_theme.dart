@@ -28,5 +28,9 @@ const redTheme = NeumorphicThemeData(
       color: Color(0xFF6A3434),
       fontWeight: FontWeight.w600,
     ),
+     titleLarge: TextStyle(
+      color: Color(0xFF6A3434),
+      fontWeight: FontWeight.w700,
+    ),
   ),
 );

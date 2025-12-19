@@ -7,5 +7,39 @@ const blueTheme = NeumorphicThemeData(
 
   iconTheme: IconThemeData(size: 20),
 
-  textTheme: TextTheme(),
+  textTheme: TextTheme(
+    /// Основной текст
+    bodyMedium: TextStyle(
+      color: Color(0xFF5A6B80),
+      fontSize: 14,
+      height: 1.4,
+    ),
+
+    /// Вторичный текст / подсказки
+    bodySmall: TextStyle(
+      color: Color(0xFF8A99AD),
+      fontSize: 12,
+    ),
+
+    /// Заголовки карточек
+    titleMedium: TextStyle(
+      color: Color(0xFF44556A),
+      fontSize: 16,
+      fontWeight: FontWeight.w600,
+    ),
+
+    /// Крупные заголовки
+    titleLarge: TextStyle(
+      color: Color(0xFF35465D),
+      fontSize: 20,
+      fontWeight: FontWeight.w700,
+    ),
+
+    /// Кнопки / CTA
+    labelLarge: TextStyle(
+      color: Color(0xFF50627A),
+      fontSize: 14,
+      fontWeight: FontWeight.w600,
+    ),
+  ),
 );

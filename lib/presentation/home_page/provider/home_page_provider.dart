@@ -65,14 +65,14 @@ class HomePageProvider extends ChangeNotifier {
       }
 
       // get audio Url
-      final res = await youtubeExplodeRepo.getAudioUrl(
-        videoUrl: _currentVideoUrl!,
-      );
+      // final res = await youtubeExplodeRepo.getAudioUrl(
+      //   videoUrl: _currentVideoUrl!,
+      // );
 
-      if (res.isEmpty) {
-        throw Exception('AUDIO URL EMPTY');
-      }
-      _currentVideoAudioUrl = res;
+      // if (res.isEmpty) {
+      //   throw Exception('AUDIO URL EMPTY');
+      // }
+     // _currentVideoAudioUrl = res;
 
       // load video
       await _loadVideo();

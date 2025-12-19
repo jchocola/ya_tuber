@@ -6,7 +6,7 @@ import 'package:ya_tuber/core/theme/green_theme.dart';
 import 'package:ya_tuber/core/theme/orange_theme.dart';
 import 'package:ya_tuber/core/theme/pink_theme.dart';
 import 'package:ya_tuber/core/theme/purple_theme.dart';
-import 'package:ya_tuber/core/theme/read_theme.dart';
+import 'package:ya_tuber/core/theme/red_theme.dart';
 import 'package:ya_tuber/core/theme/white_theme.dart';
 import 'package:ya_tuber/core/theme/yellow_theme.dart';
 import 'package:ya_tuber/main.dart';

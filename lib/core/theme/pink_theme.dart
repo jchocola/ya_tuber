@@ -28,5 +28,10 @@ const pinkTheme = NeumorphicThemeData(
       color: Color(0xFF6A5A68),
       fontWeight: FontWeight.w600,
     ),
+     titleLarge: TextStyle(
+      color: Color(0xFF6A5A68),
+      fontSize: 20,
+      fontWeight: FontWeight.w700,
+    ),
   ),
 );

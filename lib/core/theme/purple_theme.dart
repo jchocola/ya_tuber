@@ -28,5 +28,10 @@ const purpleTheme = NeumorphicThemeData(
       color: Color(0xFF5B4B7D),
       fontWeight: FontWeight.w600,
     ),
+     titleLarge: TextStyle(
+      color: Color(0xFF5B4B7D),
+      fontSize: 20,
+      fontWeight: FontWeight.w700,
+    ),
   ),
 );

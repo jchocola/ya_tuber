@@ -28,5 +28,9 @@ const brownTheme = NeumorphicThemeData(
       color: Color(0xFF5F4636),
       fontWeight: FontWeight.w600,
     ),
+     titleLarge: TextStyle(
+      color: Color(0xFF5F4636),
+      fontWeight: FontWeight.w700,
+    ),
   ),
 );

@@ -28,5 +28,9 @@ const yellowTheme = NeumorphicThemeData(
       color: Color(0xFF6A5A2F),
       fontWeight: FontWeight.w600,
     ),
+     titleLarge: TextStyle(
+      color: Color(0xFF6A5A2F),
+      fontWeight: FontWeight.w700,
+    ),
   ),
 );

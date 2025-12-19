@@ -28,5 +28,9 @@ const orangeTheme = NeumorphicThemeData(
       color: Color(0xFF6B4E3C),
       fontWeight: FontWeight.w600,
     ),
+      titleLarge: TextStyle(
+      color: Color(0xFF6B4E3C),
+      fontWeight: FontWeight.w700,
+    ),
   ),
 );
