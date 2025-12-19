@@ -28,15 +28,21 @@ class AppSettingProvider extends ChangeNotifier {
     await settingRepo.toogleAutoPlayParameter();
   }
 
-   Future<void> tooggleBGPlayValue() async {
+  Future<void> tooggleBGPlayValue() async {
     backgroundPlay = !backgroundPlay;
     notifyListeners();
     await settingRepo.toogleBackgroundPlayParameter();
   }
 
-   Future<void> tooggleThemeValue() async {
+  Future<void> tooggleThemeValue() async {
     appThemeLight = !appThemeLight;
     notifyListeners();
     await settingRepo.toogleThemeParameter();
+  }
+
+  Future<void> changeAppLangCode({required String langCode}) async {
+    this.langCode = langCode;
+    notifyListeners();
+    await settingRepo.changeAppLangCode(langCode: langCode);
   }
 }

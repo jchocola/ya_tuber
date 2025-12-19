@@ -46,19 +46,21 @@ class MyApp extends StatelessWidget {
 
         ChangeNotifierProvider(create: (context)=> PlaylistPageProvider(localDB: getIt<LocalStoreRepo>())..loadListTracks())
       ],
-      child: NeumorphicApp(
-         localizationsDelegates: [
-                S.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-            ],
-        supportedLocales: S.delegate.supportedLocales,
-        locale: Locale('ru'),
-        theme: lightTheme,
-        debugShowCheckedModeBanner: false,
-        title: 'Ya Tuber',
-        home: HomePage(),
+      child: Consumer<AppSettingProvider>(
+        builder:(context,setting,child)=> NeumorphicApp(
+           localizationsDelegates: [
+                  S.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+              ],
+          supportedLocales: S.delegate.supportedLocales,
+          locale: Locale(setting.langCode),
+          theme: lightTheme,
+          debugShowCheckedModeBanner: false,
+          title: 'Ya Tuber',
+          home: HomePage(),
+        ),
       ),
     );
   }
