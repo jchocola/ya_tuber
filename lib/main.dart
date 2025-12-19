@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:logger/web.dart';
 import 'package:provider/provider.dart';
@@ -8,6 +9,7 @@ import 'package:ya_tuber/core/light_theme.dart';
 import 'package:ya_tuber/domain/repo/app_setting_repo.dart';
 import 'package:ya_tuber/domain/repo/local_store_repo.dart';
 import 'package:ya_tuber/domain/repo/youtube_explode_repo.dart';
+import 'package:ya_tuber/generated/l10n.dart';
 import 'package:ya_tuber/presentation/home_page/home_page.dart';
 import 'package:ya_tuber/presentation/home_page/provider/home_page_provider.dart';
 import 'package:ya_tuber/presentation/playlist_page/provider/playlist_page_provider.dart';
@@ -45,6 +47,14 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context)=> PlaylistPageProvider(localDB: getIt<LocalStoreRepo>())..loadListTracks())
       ],
       child: NeumorphicApp(
+         localizationsDelegates: [
+                S.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+            ],
+        supportedLocales: S.delegate.supportedLocales,
+        locale: Locale('ru'),
         theme: lightTheme,
         debugShowCheckedModeBanner: false,
         title: 'Ya Tuber',
