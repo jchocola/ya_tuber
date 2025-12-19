@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) =>
-              HomePageProvider(youtubeExplodeRepo: getIt<YoutubeExplodeRepo>()),
+              HomePageProvider(youtubeExplodeRepo: getIt<YoutubeExplodeRepo>(), settingRepo:getIt<AppSettingRepo>(), localStoreRepo: getIt<LocalStoreRepo>() ),
         ),
 
         ChangeNotifierProvider(

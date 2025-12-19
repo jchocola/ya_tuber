@@ -38,8 +38,8 @@ class PlayButtons_when_have_controller extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 CustomCircleButton(
-                  onPressed: () async{
-                     try {
+                  onPressed: () async {
+                    try {
                       final nextVideoUrl = SmartVideoIdSelector(
                         playListIds: playlistProvider_read.listTracks
                             .map((e) => e.videoId)
@@ -155,7 +155,13 @@ class PlayButtons_when_have_controller extends StatelessWidget {
                       : AppIcon.volumeOn2,
                 ),
 
-                CustomCircleButton(onPressed: () {}, icon: AppIcon.repeatIcon),
+                CustomCircleButton(
+                  isNegative: homePageProvider_listen.isLoop,
+                  onPressed: () async {
+                    await homePageProvider_read.toogleLoop();
+                  },
+                  icon: AppIcon.repeatIcon,
+                ),
 
                 /// Play back rate
                 //TODO: PLAYBACK LOGIC
@@ -202,7 +208,12 @@ class PlayButtons_when_have_controller extends StatelessWidget {
                       videoId: homePageProvider_read.currentVideoId,
                       title: homePageProvider_read.video?.title ?? '',
                       subtitle: homePageProvider_read.video?.author ?? '',
-                      thumbnail: homePageProvider_read.video?.thumbnails.mediumResUrl ?? ''
+                      thumbnail:
+                          homePageProvider_read
+                              .video
+                              ?.thumbnails
+                              .mediumResUrl ??
+                          '',
                     );
                     logger.f(track.toString());
 
