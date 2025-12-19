@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
@@ -23,14 +26,28 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
+  StreamSubscription<List<ConnectivityResult>>? subscription;
+
   @override
   void initState() {
     super.initState();
+    subscription = Connectivity().onConnectivityChanged.listen((
+      List<ConnectivityResult> result,
+    ) {
+      logger.d(result);
+      if (result.contains(ConnectivityResult.none)) {
+        showCustomSnackbar(context, content: 'YOU ARE OFFLINE');
+      }
+      if (result.contains(ConnectivityResult.wifi) || result.contains(ConnectivityResult.mobile)) {
+        showCustomSnackbar(context, content: 'WELCOME BACK )))');
+      }
+    });
     WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void dispose() {
+    subscription?.cancel();
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
