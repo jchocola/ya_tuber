@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
+import 'package:ya_tuber/core/theme/white_theme.dart';
 import 'package:ya_tuber/domain/repo/app_setting_repo.dart';
 
 class AppSettingProvider extends ChangeNotifier {
@@ -10,6 +12,8 @@ class AppSettingProvider extends ChangeNotifier {
   bool backgroundPlay = true;
   String langCode = 'en';
   bool appThemeLight = true;
+
+  NeumorphicThemeData currentAppTheme = whiteTheme;
 
   // contructor
   AppSettingProvider({required this.settingRepo});

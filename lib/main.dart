@@ -6,8 +6,8 @@ import 'package:logger/web.dart';
 import 'package:provider/provider.dart';
 import 'package:ya_tuber/app_setting_provider.dart';
 import 'package:ya_tuber/core/di.dart';
-import 'package:ya_tuber/core/theme/dark_theme.dart';
-import 'package:ya_tuber/core/theme/light_theme.dart';
+import 'package:ya_tuber/core/theme/blue_theme.dart';
+import 'package:ya_tuber/core/theme/white_theme.dart';
 import 'package:ya_tuber/domain/repo/app_setting_repo.dart';
 import 'package:ya_tuber/domain/repo/local_store_repo.dart';
 import 'package:ya_tuber/domain/repo/youtube_explode_repo.dart';
@@ -22,11 +22,7 @@ Future<void> main() async {
   Provider.debugCheckInvalidValueType = null;
 
   // Set the preferred orientations ( portrait only)
-  await SystemChrome.setPreferredOrientations(
-    [
-      DeviceOrientation.portraitUp,
-    ]
-  );
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   ///
   /// DI
@@ -52,8 +48,11 @@ class MyApp extends StatelessWidget {
               AppSettingProvider(settingRepo: getIt<AppSettingRepo>())..init(),
         ),
         ChangeNotifierProvider(
-          create: (context) =>
-              HomePageProvider(youtubeExplodeRepo: getIt<YoutubeExplodeRepo>(), settingRepo:getIt<AppSettingRepo>(), localStoreRepo: getIt<LocalStoreRepo>() ),
+          create: (context) => HomePageProvider(
+            youtubeExplodeRepo: getIt<YoutubeExplodeRepo>(),
+            settingRepo: getIt<AppSettingRepo>(),
+            localStoreRepo: getIt<LocalStoreRepo>(),
+          ),
         ),
 
         ChangeNotifierProvider(
@@ -72,7 +71,7 @@ class MyApp extends StatelessWidget {
           ],
           supportedLocales: S.delegate.supportedLocales,
           locale: Locale(setting.langCode),
-          theme:  setting.appThemeLight ? darkTheme : lightTheme,
+          theme: setting.appThemeLight ? blueTheme : blueTheme,
           debugShowCheckedModeBanner: false,
           title: 'Ya Tuber',
           home: HomePage(),
