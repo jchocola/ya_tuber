@@ -23,7 +23,7 @@ scale: 0.85,
           child: Padding(
             padding: EdgeInsetsGeometry.all(AppConstant.widgetPadding),
             child: ExpansionTile(
-              title: Text('PlayList', style: theme.textTheme.titleMedium,),
+              title: Text('PlayList (${playListProvider_listen.listTracks.length})', style: theme.textTheme.titleMedium,),
               childrenPadding: EdgeInsets.all(AppConstant.widgetPadding),
               children: playListProvider_listen.listTracks.isNotEmpty
                   ? List.generate(playListProvider_listen.listTracks.length, (
