@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:logger/web.dart';
@@ -19,6 +20,13 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Provider.debugCheckInvalidValueType = null;
 
+  // Set the preferred orientations ( portrait only)
+  await SystemChrome.setPreferredOrientations(
+    [
+      DeviceOrientation.portraitUp,
+    ]
+  );
+
   ///
   /// DI
   ///
@@ -38,22 +46,29 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context)=> AppSettingProvider(settingRepo: getIt<AppSettingRepo>())..init()),
+        ChangeNotifierProvider(
+          create: (context) =>
+              AppSettingProvider(settingRepo: getIt<AppSettingRepo>())..init(),
+        ),
         ChangeNotifierProvider(
           create: (context) =>
               HomePageProvider(youtubeExplodeRepo: getIt<YoutubeExplodeRepo>()),
         ),
 
-        ChangeNotifierProvider(create: (context)=> PlaylistPageProvider(localDB: getIt<LocalStoreRepo>())..loadListTracks())
+        ChangeNotifierProvider(
+          create: (context) =>
+              PlaylistPageProvider(localDB: getIt<LocalStoreRepo>())
+                ..loadListTracks(),
+        ),
       ],
       child: Consumer<AppSettingProvider>(
-        builder:(context,setting,child)=> NeumorphicApp(
-           localizationsDelegates: [
-                  S.delegate,
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate,
-                  GlobalCupertinoLocalizations.delegate,
-              ],
+        builder: (context, setting, child) => NeumorphicApp(
+          localizationsDelegates: [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
           supportedLocales: S.delegate.supportedLocales,
           locale: Locale(setting.langCode),
           theme: lightTheme,
