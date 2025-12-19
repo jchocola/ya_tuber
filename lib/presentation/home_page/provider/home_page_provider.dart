@@ -223,7 +223,6 @@ class HomePageProvider extends ChangeNotifier {
 
       youtubePlayerController!.loadVideoById(videoId: videoId);
 
-
       ///
       /// LOGIC TO KNOW THE CURRENT PLAY TIME
       ///

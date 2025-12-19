@@ -1,6 +1,7 @@
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
+import 'package:ya_tuber/app_setting_provider.dart';
 import 'package:ya_tuber/core/app_constant.dart';
 import 'package:ya_tuber/core/app_icon.dart';
 import 'package:ya_tuber/core/custom_snackbar.dart';
@@ -13,8 +14,6 @@ import 'package:ya_tuber/presentation/home_page/widget/playlist_widget.dart';
 import 'package:ya_tuber/widget/custom_circle_button.dart';
 import 'package:ya_tuber/widget/custom_input.dart';
 import 'package:ya_tuber/presentation/home_page/widget/custom_homepage_appbar.dart';
-
-
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -56,7 +55,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         logger.e('Приложение в фоновом режиме');
         // Приложение свернуто или перешло в фон
         //_onAppPaused();
-        context.read<HomePageProvider>().playVideo();
+        checkPlayBackgroundOrNot();
         break;
 
       case AppLifecycleState.detached:
@@ -68,6 +67,16 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         logger.e('Приложение скрыто');
         // Новое состояние в Flutter 3.13+
         break;
+    }
+  }
+
+  void checkPlayBackgroundOrNot() {
+    if (context.read<AppSettingProvider>().backgroundPlay) {
+      logger.d('Play background');
+      context.read<HomePageProvider>().playVideo();
+    } else {
+      logger.d('Not play background');
+      return;
     }
   }
 
