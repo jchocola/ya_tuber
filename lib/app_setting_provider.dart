@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
+import 'package:ya_tuber/core/theme/theme_list.dart';
 import 'package:ya_tuber/core/theme/white_theme.dart';
 import 'package:ya_tuber/domain/repo/app_setting_repo.dart';
+import 'package:ya_tuber/main.dart';
 
 class AppSettingProvider extends ChangeNotifier {
   //REPO
@@ -11,7 +13,7 @@ class AppSettingProvider extends ChangeNotifier {
   bool autoPlay = true;
   bool backgroundPlay = true;
   String langCode = 'en';
-  bool appThemeLight = true;
+  String appTheme = THEME_LIST[0];
 
   NeumorphicThemeData currentAppTheme = whiteTheme;
 
@@ -22,7 +24,8 @@ class AppSettingProvider extends ChangeNotifier {
     autoPlay = await settingRepo.getAutoPlayParameter();
     backgroundPlay = await settingRepo.getBackgroundPlayParameter();
     langCode = await settingRepo.getAppLangCode();
-    appThemeLight = await settingRepo.getThemeParameter();
+    appTheme = await settingRepo.getThemeParameter();
+
     notifyListeners();
   }
 
@@ -39,9 +42,12 @@ class AppSettingProvider extends ChangeNotifier {
   }
 
   Future<void> tooggleThemeValue() async {
-    appThemeLight = !appThemeLight;
+    final newThemeIndex = getNextThemeValueIndex(currentValue: appTheme);
+    logger.i(newThemeIndex);
+    currentAppTheme = THEME_LIST_DATA[newThemeIndex];
+    appTheme = THEME_LIST[newThemeIndex];
     notifyListeners();
-    await settingRepo.toogleThemeParameter();
+    await settingRepo.toogleThemeParameter(value: THEME_LIST[newThemeIndex]);
   }
 
   Future<void> changeAppLangCode({required String langCode}) async {

@@ -4,8 +4,8 @@ abstract class AppSettingRepo {
   Future<void> toogleAutoPlayParameter();
   Future<bool> getAutoPlayParameter();
 
-  Future<void> toogleThemeParameter();
-  Future<bool> getThemeParameter();
+  Future<void> toogleThemeParameter({required String value});
+  Future<String> getThemeParameter();
 
    Future<void> toogleBackgroundPlayParameter();
    Future<bool> getBackgroundPlayParameter();

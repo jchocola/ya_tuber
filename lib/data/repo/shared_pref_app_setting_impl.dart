@@ -8,7 +8,7 @@ class SharedPrefAppSettingImpl implements AppSettingRepo {
   // KEYS
   static const AUTO_PLAY = 'AUTO_PLAY';
   static const BACKGROUND_PLAY = 'BACKGROUND_PLAY';
-  static const APP_THEME_LIGHT = 'APP_THEME_LIGHT';
+  static const APP_THEME = 'APP_THEME';
   static const LANG_CODE = 'LANG_CODE';
 
   @override
@@ -28,8 +28,8 @@ class SharedPrefAppSettingImpl implements AppSettingRepo {
   }
 
   @override
-  Future<bool> getThemeParameter() async {
-    return prefs.getBool(APP_THEME_LIGHT) ?? true;
+  Future<String> getThemeParameter() async {
+    return prefs.getString(APP_THEME) ?? APP_THEME[0];
   }
 
   @override
@@ -46,10 +46,10 @@ class SharedPrefAppSettingImpl implements AppSettingRepo {
   }
 
   @override
-  Future<void> toogleThemeParameter() async {
-    final currentValue = await getThemeParameter();
-    await prefs.setBool(APP_THEME_LIGHT, !currentValue);
-    logger.i('Changed app theme ${!currentValue}');
+  Future<void> toogleThemeParameter({required String value}) async {
+   
+    await prefs.setString(APP_THEME, value);
+    logger.i('Changed app theme ${value}');
   }
   
   @override

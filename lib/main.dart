@@ -71,7 +71,7 @@ class MyApp extends StatelessWidget {
           ],
           supportedLocales: S.delegate.supportedLocales,
           locale: Locale(setting.langCode),
-          theme: setting.appThemeLight ? blueTheme : blueTheme,
+          theme: setting.currentAppTheme,
           debugShowCheckedModeBanner: false,
           title: 'Ya Tuber',
           home: HomePage(),
