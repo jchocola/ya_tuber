@@ -11,6 +11,10 @@ class AppConstant {
   static double widgetPadding = 10;
   static double sliderHeight = 10;
 
+  static String appVerion = '1.0.0';
+  static String buildDate = '19.12.2025';
+  static String developer = 'Nguen T.B';
+
   static String privacyPolicy =
       'https://www.freeprivacypolicy.com/live/0be1c786-9c92-431b-8e83-2f40ff4891f9';
 

@@ -8,6 +8,7 @@ import 'package:ya_tuber/app_setting_provider.dart';
 import 'package:ya_tuber/core/app_constant.dart';
 import 'package:ya_tuber/core/app_icon.dart';
 import 'package:ya_tuber/core/custom_snackbar.dart';
+import 'package:ya_tuber/generated/l10n.dart';
 import 'package:ya_tuber/main.dart';
 import 'package:ya_tuber/presentation/home_page/provider/home_page_provider.dart';
 import 'package:ya_tuber/presentation/home_page/widget/info_widget.dart';
@@ -105,15 +106,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       },
       child: Scaffold(
         appBar: CustomhomePageAppbar(),
-
-        // appBar: NeumorphicAppBar(
-        //   //  leading: CustomNeumoIcon(),
-        //   title: CustomNeumoText(text: 'Ya Tube'),
-        //   actions: [
-        //     CustomCircleButton(onPressed: () {}, icon: AppIcon.searchIcon),
-        //     CustomCircleButton(onPressed: () {}, icon: AppIcon.settingIcon),
-        //   ],
-        // ),
         body: buildBody(context),
       ),
     );
@@ -134,7 +126,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
               children: [
                 Expanded(
                   child: CustomInput(
-                    hintText: 'Past Youtube link...',
+                    hintText: S.of(context).pastYoutubeLink,
                     onChanged: (value) {
                       context.read<HomePageProvider>().setCurrentVideoUrl(
                         value,

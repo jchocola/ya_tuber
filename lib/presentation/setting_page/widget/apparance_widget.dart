@@ -26,7 +26,7 @@ class AppareanceWidget extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 spacing: AppConstant.appPadding,
                 children: [
-                  Text('Language', style: theme.textTheme.titleMedium),
+                  Text(S.of(context).language, style: theme.textTheme.titleMedium),
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -61,9 +61,9 @@ class AppareanceWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: AppConstant.widgetPadding,
       children: [
-        Text('Appearance', style: theme.textTheme.titleMedium),
+        Text(S.of(context).appearance, style: theme.textTheme.titleMedium),
         SettingTitle(
-          title: 'Theme',
+          title: S.of(context).theme,
           //withSwitch: true,
           //switchValue: appSettingProvider_listen.appTheme,
           onPressed: () async {
@@ -72,7 +72,7 @@ class AppareanceWidget extends StatelessWidget {
           subTitle: appSettingProvider_listen.appTheme,
         ),
         SettingTitle(
-          title: 'Language',
+          title: S.of(context).language,
           onPressed: onLanguageTapped,
           subTitle: appSettingProvider_listen.langCode,
         ),

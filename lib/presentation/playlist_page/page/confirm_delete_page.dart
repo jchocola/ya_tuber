@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:ya_tuber/core/app_constant.dart';
 import 'package:ya_tuber/core/custom_snackbar.dart';
 import 'package:ya_tuber/domain/entity/track_entity.dart';
+import 'package:ya_tuber/generated/l10n.dart';
 import 'package:ya_tuber/presentation/playlist_page/provider/playlist_page_provider.dart';
 import 'package:ya_tuber/widget/big_button.dart';
 import 'package:ya_tuber/widget/play_list_card.dart';
@@ -25,9 +26,9 @@ class ConfirmDeletePage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Delete Track?' , style: theme.textTheme.titleLarge,),
+              Text(S.of(context).deleteTrack , style: theme.textTheme.titleLarge,),
               Text(
-                'This action cannot be undone. The track will be permanently removed from your playlist.',
+                S.of(context).thisActionCannotBeUndoneTheTrackWillBePermanently,
                 style:  theme.textTheme.bodySmall,
               ),
               PlayListCard(isPlaying: true, track: track),
@@ -41,7 +42,7 @@ class ConfirmDeletePage extends StatelessWidget {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      title: 'Cancel',
+                      title: S.of(context).cancel,
                     ),
                   ),
                   Expanded(
@@ -54,7 +55,7 @@ class ConfirmDeletePage extends StatelessWidget {
                               showCustomSnackbar(context, type: SNACKBAR_TYPE.SUCCESS, content: 'Track deleted');
                             });
                       },
-                      title: 'Confirm',
+                      title: S.of(context).confirm,
                     ),
                   ),
                 ],

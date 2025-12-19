@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:ya_tuber/core/app_constant.dart';
 import 'package:ya_tuber/core/app_icon.dart';
+import 'package:ya_tuber/generated/l10n.dart';
 import 'package:ya_tuber/presentation/playlist_page/playlist_page.dart';
 import 'package:ya_tuber/presentation/setting_page/setting_page.dart';
 import 'package:ya_tuber/widget/custom_circle_button.dart';
@@ -19,7 +20,7 @@ class CustomhomePageAppbar extends StatelessWidget
         padding: EdgeInsets.all(AppConstant.appPadding),
         child: Row(
           children: [
-            Text('YaTube', style: theme.textTheme.titleMedium,),
+            Text(S.of(context).yatube, style: theme.textTheme.titleMedium,),
 
             Spacer(),
 

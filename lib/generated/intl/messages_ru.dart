@@ -22,6 +22,51 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "about": MessageLookupByLibrary.simpleMessage("О нас"),
+    "appVersion": MessageLookupByLibrary.simpleMessage("Версия приложения"),
+    "appearance": MessageLookupByLibrary.simpleMessage("Внешний вид"),
+    "artistChannel": MessageLookupByLibrary.simpleMessage("Артист / Канал"),
+    "autoPlayNext": MessageLookupByLibrary.simpleMessage(
+      "Автоматическое воспроизведение следующего",
+    ),
+    "automaticallyPlayNextTrackInPlaylist":
+        MessageLookupByLibrary.simpleMessage(
+          "Автоматически воспроизводить следующий трек в плейлисте",
+        ),
+    "automaticallyPlayOnBackground": MessageLookupByLibrary.simpleMessage(
+      "Автоматическое воспроизведение в фоновом режиме",
+    ),
+    "backgroundPlay": MessageLookupByLibrary.simpleMessage(
+      "Фоновое воспроизведение",
+    ),
+    "build": MessageLookupByLibrary.simpleMessage("Дата сборки"),
+    "cancel": MessageLookupByLibrary.simpleMessage("Отмена"),
+    "changesWillBeSavedToYourLocalPlaylist":
+        MessageLookupByLibrary.simpleMessage(
+          "Изменения будут сохранены в вашем локальном плейлисте.",
+        ),
+    "confirm": MessageLookupByLibrary.simpleMessage("Подтвердить"),
+    "deleteTrack": MessageLookupByLibrary.simpleMessage("Удалить трек?"),
+    "developer": MessageLookupByLibrary.simpleMessage("Разработчик"),
+    "editTrack": MessageLookupByLibrary.simpleMessage("Редактировать трек"),
+    "language": MessageLookupByLibrary.simpleMessage("Язык"),
+    "pastYoutubeLink": MessageLookupByLibrary.simpleMessage(
+      "Ссылка на YouTube...",
+    ),
+    "playback": MessageLookupByLibrary.simpleMessage("Воспроизведение"),
+    "playlist": MessageLookupByLibrary.simpleMessage("Плейлист"),
+    "privacyPolicy": MessageLookupByLibrary.simpleMessage("Политика конф."),
     "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
+    "termOfServices": MessageLookupByLibrary.simpleMessage("Усл. пред. услуг"),
+    "theme": MessageLookupByLibrary.simpleMessage("Тема"),
+    "thisActionCannotBeUndoneTheTrackWillBePermanently":
+        MessageLookupByLibrary.simpleMessage(
+          "Это действие нельзя отменить. Трек будет навсегда удален из вашего плейлиста.",
+        ),
+    "trackTitle": MessageLookupByLibrary.simpleMessage("Название трека"),
+    "updateTheTrackInformationBelow": MessageLookupByLibrary.simpleMessage(
+      "Обновите информацию о треке ниже",
+    ),
+    "yatube": MessageLookupByLibrary.simpleMessage("YaTube"),
   };
 }

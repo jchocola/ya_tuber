@@ -58,6 +58,196 @@ class S {
   String get settings {
     return Intl.message('Settings', name: 'settings', desc: '', args: []);
   }
+
+  /// `Playlist`
+  String get playlist {
+    return Intl.message('Playlist', name: 'playlist', desc: '', args: []);
+  }
+
+  /// `Edit Track`
+  String get editTrack {
+    return Intl.message('Edit Track', name: 'editTrack', desc: '', args: []);
+  }
+
+  /// `Update the track information below`
+  String get updateTheTrackInformationBelow {
+    return Intl.message(
+      'Update the track information below',
+      name: 'updateTheTrackInformationBelow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Track Title`
+  String get trackTitle {
+    return Intl.message('Track Title', name: 'trackTitle', desc: '', args: []);
+  }
+
+  /// `Artist / Channel`
+  String get artistChannel {
+    return Intl.message(
+      'Artist / Channel',
+      name: 'artistChannel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message('Cancel', name: 'cancel', desc: '', args: []);
+  }
+
+  /// `Confirm`
+  String get confirm {
+    return Intl.message('Confirm', name: 'confirm', desc: '', args: []);
+  }
+
+  /// `Changes will be saved to your local playlist`
+  String get changesWillBeSavedToYourLocalPlaylist {
+    return Intl.message(
+      'Changes will be saved to your local playlist',
+      name: 'changesWillBeSavedToYourLocalPlaylist',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Track?`
+  String get deleteTrack {
+    return Intl.message(
+      'Delete Track?',
+      name: 'deleteTrack',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This action cannot be undone. The track will be permanently removed from your playlist.`
+  String get thisActionCannotBeUndoneTheTrackWillBePermanently {
+    return Intl.message(
+      'This action cannot be undone. The track will be permanently removed from your playlist.',
+      name: 'thisActionCannotBeUndoneTheTrackWillBePermanently',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Auto Play Next`
+  String get autoPlayNext {
+    return Intl.message(
+      'Auto Play Next',
+      name: 'autoPlayNext',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Automatically play next track in playlist`
+  String get automaticallyPlayNextTrackInPlaylist {
+    return Intl.message(
+      'Automatically play next track in playlist',
+      name: 'automaticallyPlayNextTrackInPlaylist',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Playback`
+  String get playback {
+    return Intl.message('Playback', name: 'playback', desc: '', args: []);
+  }
+
+  /// `Background Play`
+  String get backgroundPlay {
+    return Intl.message(
+      'Background Play',
+      name: 'backgroundPlay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Automatically play on background`
+  String get automaticallyPlayOnBackground {
+    return Intl.message(
+      'Automatically play on background',
+      name: 'automaticallyPlayOnBackground',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message('Language', name: 'language', desc: '', args: []);
+  }
+
+  /// `Appearance`
+  String get appearance {
+    return Intl.message('Appearance', name: 'appearance', desc: '', args: []);
+  }
+
+  /// `Theme`
+  String get theme {
+    return Intl.message('Theme', name: 'theme', desc: '', args: []);
+  }
+
+  /// `About`
+  String get about {
+    return Intl.message('About', name: 'about', desc: '', args: []);
+  }
+
+  /// `App Version`
+  String get appVersion {
+    return Intl.message('App Version', name: 'appVersion', desc: '', args: []);
+  }
+
+  /// `Build`
+  String get build {
+    return Intl.message('Build', name: 'build', desc: '', args: []);
+  }
+
+  /// `Developer`
+  String get developer {
+    return Intl.message('Developer', name: 'developer', desc: '', args: []);
+  }
+
+  /// `Term of Services`
+  String get termOfServices {
+    return Intl.message(
+      'Term of Services',
+      name: 'termOfServices',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy Policy`
+  String get privacyPolicy {
+    return Intl.message(
+      'Privacy Policy',
+      name: 'privacyPolicy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Past Youtube link...`
+  String get pastYoutubeLink {
+    return Intl.message(
+      'Past Youtube link...',
+      name: 'pastYoutubeLink',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `YaTube`
+  String get yatube {
+    return Intl.message('YaTube', name: 'yatube', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

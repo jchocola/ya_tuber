@@ -30,7 +30,7 @@ final purpleTheme = NeumorphicThemeData(
       fontWeight: FontWeight.w600,
     ),
      titleLarge:  appTextStyle.copyWith(
-      color: Color(0xFF6B4E3C),
+      color: Color(0xFF5B4B7D),
       fontWeight: FontWeight.w700,
     ),
   ),

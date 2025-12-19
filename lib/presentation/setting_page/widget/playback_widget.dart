@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ya_tuber/app_setting_provider.dart';
 import 'package:ya_tuber/core/app_constant.dart';
+import 'package:ya_tuber/generated/l10n.dart';
 import 'package:ya_tuber/widget/setting_title.dart';
 
 class PlaybackWidget extends StatelessWidget {
@@ -16,10 +17,10 @@ class PlaybackWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: AppConstant.widgetPadding,
       children: [
-        Text('Playback' , style: theme.textTheme.titleMedium,),
+        Text(S.of(context).playback , style: theme.textTheme.titleMedium,),
         SettingTitle(
-          title: 'Auto Play Next',
-          subTitle: 'Automatically play next track in playlist',
+          title: S.of(context).autoPlayNext,
+          subTitle: S.of(context).automaticallyPlayNextTrackInPlaylist,
           withSwitch: true,
           switchValue: appSettingProvider_listen.autoPlay,
           onPressed: () async {
@@ -28,8 +29,8 @@ class PlaybackWidget extends StatelessWidget {
         ),
 
         SettingTitle(
-          title: 'Background Play',
-          subTitle: 'Automatically play next track in playlist',
+          title: S.of(context).backgroundPlay,
+          subTitle: S.of(context).automaticallyPlayOnBackground,
           withSwitch: true,
           switchValue: appSettingProvider_listen.backgroundPlay,
           onPressed: () async {
