@@ -14,6 +14,7 @@
   "deleteTrack": "Удалить трек?",
   "developer": "Разработчик",
   "editTrack": "Редактировать трек",
+  "empty": "Пусто",
   "invalidUrlPleaseCheckAgain": "Неверный URL, пожалуйста, проверьте еще раз!",
   "language": "Язык",
   "notSelectedVideo": "Видео не выбрано!",

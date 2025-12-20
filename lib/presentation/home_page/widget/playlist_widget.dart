@@ -52,7 +52,7 @@ scale: 0.85,
                       },
                     );
                   })
-                : [Text('Empty')],
+                : [Text(S.of(context).empty)],
           ),
         ),
       ),

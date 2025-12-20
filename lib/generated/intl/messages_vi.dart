@@ -47,6 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "deleteTrack": MessageLookupByLibrary.simpleMessage("Xóa bài hát?"),
     "developer": MessageLookupByLibrary.simpleMessage("Nhà phát triển"),
     "editTrack": MessageLookupByLibrary.simpleMessage("Chỉnh sửa bản nhạc"),
+    "empty": MessageLookupByLibrary.simpleMessage("Trống"),
     "invalidUrlPleaseCheckAgain": MessageLookupByLibrary.simpleMessage(
       "URL không hợp lệ, vui lòng kiểm tra lại!",
     ),

@@ -56,5 +56,5 @@ class CustomhomePageAppbar extends StatelessWidget
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(80);
+  Size get preferredSize => Size.fromHeight(AppConstant.appBarHeight);
 }

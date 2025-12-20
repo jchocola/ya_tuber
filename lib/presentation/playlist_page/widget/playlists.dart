@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:ya_tuber/generated/l10n.dart';
 import 'package:ya_tuber/presentation/playlist_page/provider/playlist_page_provider.dart';
 import 'package:ya_tuber/widget/play_list_card.dart';
 
@@ -20,6 +21,6 @@ class Playlists extends StatelessWidget {
               },
             ),
           )
-        : Center(child: Text('Empty'));
+        : Center(child: Text(S.of(context).empty));
   }
 }

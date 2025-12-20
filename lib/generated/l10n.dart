@@ -338,6 +338,11 @@ class S {
       args: [],
     );
   }
+
+  /// `Empty`
+  String get empty {
+    return Intl.message('Empty', name: 'empty', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

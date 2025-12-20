@@ -49,6 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "deleteTrack": MessageLookupByLibrary.simpleMessage("Удалить трек?"),
     "developer": MessageLookupByLibrary.simpleMessage("Разработчик"),
     "editTrack": MessageLookupByLibrary.simpleMessage("Редактировать трек"),
+    "empty": MessageLookupByLibrary.simpleMessage("Пусто"),
     "invalidUrlPleaseCheckAgain": MessageLookupByLibrary.simpleMessage(
       "Неверный URL, пожалуйста, проверьте еще раз!",
     ),

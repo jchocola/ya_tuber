@@ -10,6 +10,7 @@ class AppConstant {
   static double appPadding = 20.0;
   static double widgetPadding = 10;
   static double sliderHeight = 10;
+  static double appBarHeight = 80;
 
   static String appVerion = '1.0.0';
   static String buildDate = '19.12.2025';

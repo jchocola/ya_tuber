@@ -34,5 +34,6 @@
   "notSelectedVideo": "Not selected video!",
   "trackDeletedFromPlaylist": "Track deleted from playlist!",
   "trackEdited": "Track edited!",
-  "trackAddedToPlaylist": "Track added to playlist!"
+  "trackAddedToPlaylist": "Track added to playlist!",
+  "empty": "Empty"
 }

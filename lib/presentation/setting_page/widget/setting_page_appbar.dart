@@ -47,5 +47,5 @@ class SettingPageAppbar extends StatelessWidget
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(60);
+  Size get preferredSize => Size.fromHeight(AppConstant.appBarHeight);
 }
