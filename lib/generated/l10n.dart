@@ -258,6 +258,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Welcome back, glad to see you :)`
+  String get welcomeBackGladToSeeYou {
+    return Intl.message(
+      'Welcome back, glad to see you :)',
+      name: 'welcomeBackGladToSeeYou',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You're offline :(`
+  String get youreOffline {
+    return Intl.message(
+      'You\'re offline :(',
+      name: 'youreOffline',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `URL is empty!`
+  String get urlIsEmpty {
+    return Intl.message(
+      'URL is empty!',
+      name: 'urlIsEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid URL, please check again!`
+  String get invalidUrlPleaseCheckAgain {
+    return Intl.message(
+      'Invalid URL, please check again!',
+      name: 'invalidUrlPleaseCheckAgain',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not selected video!`
+  String get notSelectedVideo {
+    return Intl.message(
+      'Not selected video!',
+      name: 'notSelectedVideo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Track deleted from playlist!`
+  String get trackDeletedFromPlaylist {
+    return Intl.message(
+      'Track deleted from playlist!',
+      name: 'trackDeletedFromPlaylist',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Track edited!`
+  String get trackEdited {
+    return Intl.message(
+      'Track edited!',
+      name: 'trackEdited',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Track added to playlist!`
+  String get trackAddedToPlaylist {
+    return Intl.message(
+      'Track added to playlist!',
+      name: 'trackAddedToPlaylist',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

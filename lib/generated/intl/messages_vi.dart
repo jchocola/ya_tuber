@@ -47,14 +47,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "deleteTrack": MessageLookupByLibrary.simpleMessage("Xóa bài hát?"),
     "developer": MessageLookupByLibrary.simpleMessage("Nhà phát triển"),
     "editTrack": MessageLookupByLibrary.simpleMessage("Chỉnh sửa bản nhạc"),
+    "invalidUrlPleaseCheckAgain": MessageLookupByLibrary.simpleMessage(
+      "URL không hợp lệ, vui lòng kiểm tra lại!",
+    ),
     "language": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
+    "notSelectedVideo": MessageLookupByLibrary.simpleMessage(
+      "Video chưa được chọn!",
+    ),
     "pastYoutubeLink": MessageLookupByLibrary.simpleMessage(
       "Liên kết YouTube...",
     ),
     "playback": MessageLookupByLibrary.simpleMessage("Phát lại"),
     "playlist": MessageLookupByLibrary.simpleMessage("Danh sách phát"),
     "pleaseLongTapToSetValue": MessageLookupByLibrary.simpleMessage(
-      "Please long tap to set value!",
+      "Vui lòng nhấn giữ để đặt giá trị!",
     ),
     "privacyPolicy": MessageLookupByLibrary.simpleMessage("Chính sách bảo mật"),
     "settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
@@ -66,10 +72,24 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "Hành động này không thể hoàn tác. Bài hát sẽ bị xóa vĩnh viễn khỏi danh sách phát của bạn.",
         ),
+    "trackAddedToPlaylist": MessageLookupByLibrary.simpleMessage(
+      "Bài hát đã được thêm vào danh sách phát!",
+    ),
+    "trackDeletedFromPlaylist": MessageLookupByLibrary.simpleMessage(
+      "Bài hát đã bị xóa khỏi danh sách phát!",
+    ),
+    "trackEdited": MessageLookupByLibrary.simpleMessage(
+      "Đã chỉnh sửa bản ghi!",
+    ),
     "trackTitle": MessageLookupByLibrary.simpleMessage("Tên bài hát"),
     "updateTheTrackInformationBelow": MessageLookupByLibrary.simpleMessage(
       "Cập nhật thông tin bài hát bên dưới",
     ),
+    "urlIsEmpty": MessageLookupByLibrary.simpleMessage("URL trống!"),
+    "welcomeBackGladToSeeYou": MessageLookupByLibrary.simpleMessage(
+      "Chào mừng bạn quay lại:)",
+    ),
     "yatube": MessageLookupByLibrary.simpleMessage("YaTube"),
+    "youreOffline": MessageLookupByLibrary.simpleMessage("Bạn đang offline :("),
   };
 }

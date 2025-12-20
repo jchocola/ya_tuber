@@ -26,5 +26,13 @@
   "privacyPolicy": "Privacy Policy",
   "pastYoutubeLink": "Past Youtube link...",
   "yatube": "YaTube",
-  "pleaseLongTapToSetValue": "Please long tap to set value!"
+  "pleaseLongTapToSetValue": "Please long tap to set value!",
+  "welcomeBackGladToSeeYou": "Welcome back, glad to see you :)",
+  "youreOffline": "You're offline :(",
+  "urlIsEmpty": "URL is empty!",
+  "invalidUrlPleaseCheckAgain": "Invalid URL, please check again!",
+  "notSelectedVideo": "Not selected video!",
+  "trackDeletedFromPlaylist": "Track deleted from playlist!",
+  "trackEdited": "Track edited!",
+  "trackAddedToPlaylist": "Track added to playlist!"
 }

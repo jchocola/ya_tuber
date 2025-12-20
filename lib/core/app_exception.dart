@@ -1,6 +1,7 @@
 // ignore_for_file: constant_identifier_names, camel_case_types, non_constant_identifier_names
 
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
+import 'package:ya_tuber/generated/l10n.dart';
 
 enum APP_EXCEPTION {
   INTERNET_CONNECTED,
@@ -19,20 +20,20 @@ String AppExceptionConverter(
 }) {
   switch (exception) {
     case APP_EXCEPTION.INTERNET_CONNECTED:
-      return 'Welcome back, glad to see you :)';
+      return S.of(context).welcomeBackGladToSeeYou;
     case APP_EXCEPTION.INTERNET_NOT_CONNECTED:
-      return "You're offline :(";
+      return S.of(context).youreOffline;
     case APP_EXCEPTION.EMPTY_URL:
-      return 'URL is empty!';
+      return S.of(context).urlIsEmpty;
     case APP_EXCEPTION.INVALID_URL:
-      return 'Invalid URL, please check again!';
+      return S.of(context).invalidUrlPleaseCheckAgain;
     case APP_EXCEPTION.NOT_CURRENT_VIDEO:
-      return 'Not selected video!';
+      return S.of(context).notSelectedVideo;
     case APP_EXCEPTION.TRACK_DELETED:
-      return 'Track deleted from playlist!';
+      return S.of(context).trackDeletedFromPlaylist;
     case APP_EXCEPTION.TRACK_EDITED:
-      return 'Track edited!';
+      return S.of(context).trackEdited;
     case APP_EXCEPTION.TRACK_ADDED:
-      return 'Track added to playlist!';
+      return S.of(context).trackAddedToPlaylist;
   }
 }

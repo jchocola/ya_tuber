@@ -45,7 +45,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "deleteTrack": MessageLookupByLibrary.simpleMessage("Delete Track?"),
     "developer": MessageLookupByLibrary.simpleMessage("Developer"),
     "editTrack": MessageLookupByLibrary.simpleMessage("Edit Track"),
+    "invalidUrlPleaseCheckAgain": MessageLookupByLibrary.simpleMessage(
+      "Invalid URL, please check again!",
+    ),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
+    "notSelectedVideo": MessageLookupByLibrary.simpleMessage(
+      "Not selected video!",
+    ),
     "pastYoutubeLink": MessageLookupByLibrary.simpleMessage(
       "Past Youtube link...",
     ),
@@ -62,10 +68,22 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "This action cannot be undone. The track will be permanently removed from your playlist.",
         ),
+    "trackAddedToPlaylist": MessageLookupByLibrary.simpleMessage(
+      "Track added to playlist!",
+    ),
+    "trackDeletedFromPlaylist": MessageLookupByLibrary.simpleMessage(
+      "Track deleted from playlist!",
+    ),
+    "trackEdited": MessageLookupByLibrary.simpleMessage("Track edited!"),
     "trackTitle": MessageLookupByLibrary.simpleMessage("Track Title"),
     "updateTheTrackInformationBelow": MessageLookupByLibrary.simpleMessage(
       "Update the track information below",
     ),
+    "urlIsEmpty": MessageLookupByLibrary.simpleMessage("URL is empty!"),
+    "welcomeBackGladToSeeYou": MessageLookupByLibrary.simpleMessage(
+      "Welcome back, glad to see you :)",
+    ),
     "yatube": MessageLookupByLibrary.simpleMessage("YaTube"),
+    "youreOffline": MessageLookupByLibrary.simpleMessage("You\'re offline :("),
   };
 }

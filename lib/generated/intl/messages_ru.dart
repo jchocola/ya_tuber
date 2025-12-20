@@ -49,14 +49,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "deleteTrack": MessageLookupByLibrary.simpleMessage("Удалить трек?"),
     "developer": MessageLookupByLibrary.simpleMessage("Разработчик"),
     "editTrack": MessageLookupByLibrary.simpleMessage("Редактировать трек"),
+    "invalidUrlPleaseCheckAgain": MessageLookupByLibrary.simpleMessage(
+      "Неверный URL, пожалуйста, проверьте еще раз!",
+    ),
     "language": MessageLookupByLibrary.simpleMessage("Язык"),
+    "notSelectedVideo": MessageLookupByLibrary.simpleMessage(
+      "Видео не выбрано!",
+    ),
     "pastYoutubeLink": MessageLookupByLibrary.simpleMessage(
       "Ссылка на YouTube...",
     ),
     "playback": MessageLookupByLibrary.simpleMessage("Воспроизведение"),
     "playlist": MessageLookupByLibrary.simpleMessage("Плейлист"),
     "pleaseLongTapToSetValue": MessageLookupByLibrary.simpleMessage(
-      "Please long tap to set value!",
+      "Пожалуйста, нажмите и удерживайте, чтобы установить значение!",
     ),
     "privacyPolicy": MessageLookupByLibrary.simpleMessage("Политика конф."),
     "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
@@ -66,10 +72,22 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "Это действие нельзя отменить. Трек будет навсегда удален из вашего плейлиста.",
         ),
+    "trackAddedToPlaylist": MessageLookupByLibrary.simpleMessage(
+      "Трек добавлен в плейлист!",
+    ),
+    "trackDeletedFromPlaylist": MessageLookupByLibrary.simpleMessage(
+      "Трек удален из плейлиста!",
+    ),
+    "trackEdited": MessageLookupByLibrary.simpleMessage("Трек отредактирован!"),
     "trackTitle": MessageLookupByLibrary.simpleMessage("Название трека"),
     "updateTheTrackInformationBelow": MessageLookupByLibrary.simpleMessage(
       "Обновите информацию о треке ниже",
     ),
+    "urlIsEmpty": MessageLookupByLibrary.simpleMessage("URL пустой!"),
+    "welcomeBackGladToSeeYou": MessageLookupByLibrary.simpleMessage(
+      "С возвращением, рад тебя видеть :)",
+    ),
     "yatube": MessageLookupByLibrary.simpleMessage("YaTube"),
+    "youreOffline": MessageLookupByLibrary.simpleMessage("Вы не в сети :("),
   };
 }
