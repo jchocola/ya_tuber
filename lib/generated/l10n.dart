@@ -248,6 +248,16 @@ class S {
   String get yatube {
     return Intl.message('YaTube', name: 'yatube', desc: '', args: []);
   }
+
+  /// `Please long tap to set value!`
+  String get pleaseLongTapToSetValue {
+    return Intl.message(
+      'Please long tap to set value!',
+      name: 'pleaseLongTapToSetValue',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

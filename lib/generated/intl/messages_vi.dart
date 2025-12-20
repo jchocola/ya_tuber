@@ -53,6 +53,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "playback": MessageLookupByLibrary.simpleMessage("Phát lại"),
     "playlist": MessageLookupByLibrary.simpleMessage("Danh sách phát"),
+    "pleaseLongTapToSetValue": MessageLookupByLibrary.simpleMessage(
+      "Please long tap to set value!",
+    ),
     "privacyPolicy": MessageLookupByLibrary.simpleMessage("Chính sách bảo mật"),
     "settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
     "termOfServices": MessageLookupByLibrary.simpleMessage(

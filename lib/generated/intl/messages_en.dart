@@ -51,6 +51,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "playback": MessageLookupByLibrary.simpleMessage("Playback"),
     "playlist": MessageLookupByLibrary.simpleMessage("Playlist"),
+    "pleaseLongTapToSetValue": MessageLookupByLibrary.simpleMessage(
+      "Please long tap to set value!",
+    ),
     "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "termOfServices": MessageLookupByLibrary.simpleMessage("Term of Services"),

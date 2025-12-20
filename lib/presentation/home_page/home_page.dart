@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -6,6 +8,7 @@ import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 import 'package:ya_tuber/app_setting_provider.dart';
 import 'package:ya_tuber/core/app_constant.dart';
+import 'package:ya_tuber/core/app_exception.dart';
 import 'package:ya_tuber/core/app_icon.dart';
 import 'package:ya_tuber/core/custom_snackbar.dart';
 import 'package:ya_tuber/generated/l10n.dart';
@@ -37,10 +40,10 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     ) {
       logger.d(result);
       if (result.contains(ConnectivityResult.none)) {
-        showCustomSnackbar(context, content: 'YOU ARE OFFLINE');
+        showCustomSnackbar(context, content: AppExceptionConverter(context, exception: APP_EXCEPTION.INTERNET_NOT_CONNECTED) , type: SNACKBAR_TYPE.ERROR);
       }
       if (result.contains(ConnectivityResult.wifi) || result.contains(ConnectivityResult.mobile)) {
-        showCustomSnackbar(context, content: 'WELCOME BACK )))');
+        showCustomSnackbar(context, content: AppExceptionConverter(context, exception: APP_EXCEPTION.INTERNET_CONNECTED),type: SNACKBAR_TYPE.SUCCESS);
       }
     });
     WidgetsBinding.instance.addObserver(this);
@@ -139,7 +142,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                     try {
                       await context.read<HomePageProvider>().loadVideoInfo();
                     } catch (e) {
-                      showCustomSnackbar(context, content: e.toString());
+                      showCustomSnackbar(context, content: AppExceptionConverter(context, exception: e as APP_EXCEPTION));
                     }
                   },
                   icon: AppIcon.searchIcon,

@@ -1,0 +1,10 @@
+Catch cases :
+    - when internet connected
+    - when internet not connected
+    - when url empty ✅
+    - when invalid URL ✅
+    - when save tapped , but have not current video infoinfo ✅
+    - track deleted✅
+    - track edited ✅
+    - added to playlist✅
+

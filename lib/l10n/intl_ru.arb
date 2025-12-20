@@ -25,5 +25,6 @@
   "thisActionCannotBeUndoneTheTrackWillBePermanently": "Это действие нельзя отменить. Трек будет навсегда удален из вашего плейлиста.",
   "trackTitle": "Название трека",
   "updateTheTrackInformationBelow": "Обновите информацию о треке ниже",
-  "yatube": "YaTube"
+  "yatube": "YaTube",
+  "pleaseLongTapToSetValue": "Please long tap to set value!"
 }

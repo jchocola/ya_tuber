@@ -25,5 +25,6 @@
   "thisActionCannotBeUndoneTheTrackWillBePermanently": "Hành động này không thể hoàn tác. Bài hát sẽ bị xóa vĩnh viễn khỏi danh sách phát của bạn.",
   "trackTitle": "Tên bài hát",
   "updateTheTrackInformationBelow": "Cập nhật thông tin bài hát bên dưới",
-  "yatube": "YaTube"
+  "yatube": "YaTube",
+  "pleaseLongTapToSetValue": "Please long tap to set value!"
 }

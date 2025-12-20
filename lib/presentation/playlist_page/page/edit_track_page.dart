@@ -3,6 +3,7 @@ import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 import 'package:ya_tuber/core/app_constant.dart';
+import 'package:ya_tuber/core/app_exception.dart';
 import 'package:ya_tuber/core/custom_snackbar.dart';
 import 'package:ya_tuber/domain/entity/track_entity.dart';
 import 'package:ya_tuber/generated/l10n.dart';
@@ -91,7 +92,9 @@ class _EditTrackPageState extends State<EditTrackPage> {
                               .read<PlaylistPageProvider>()
                               .saveTrack(track: trackWithNewData)
                               .then((_) {
-                                showCustomSnackbar(context, content: 'Edited');
+                                showCustomSnackbar(context, 
+                                type: SNACKBAR_TYPE.SUCCESS,
+                                content: AppExceptionConverter(context, exception: APP_EXCEPTION.TRACK_EDITED));
                               });
                         },
                         title: S.of(context).confirm,

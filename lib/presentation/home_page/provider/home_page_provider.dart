@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:ya_tuber/core/app_exception.dart';
 import 'package:ya_tuber/core/utils/smart_videoId_selector.dart';
 import 'package:ya_tuber/domain/entity/track_entity.dart';
 import 'package:ya_tuber/domain/repo/app_setting_repo.dart';
@@ -61,7 +62,7 @@ class HomePageProvider extends ChangeNotifier {
 
       // if current video url is empty
       if (_currentVideoUrl == null || _currentVideoUrl!.isEmpty) {
-        throw Exception('URL EMPTY');
+        throw APP_EXCEPTION.EMPTY_URL;
       }
 
       // get audio Url
