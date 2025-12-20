@@ -20,6 +20,6 @@ class Playlists extends StatelessWidget {
               },
             ),
           )
-        : Text('Empty');
+        : Center(child: Text('Empty'));
   }
 }

@@ -17,13 +17,13 @@ class CustomhomePageAppbar extends StatelessWidget
     final theme = Theme.of(context);
     return Neumorphic(
       child: Padding(
-        padding: EdgeInsets.all(AppConstant.appPadding),
+        padding: EdgeInsets.only(left:  AppConstant.appPadding ,right:  AppConstant.appPadding, top: AppConstant.appPadding*2, bottom: AppConstant.appPadding),
         child: Row(
           children: [
             Text(S.of(context).yatube, style: theme.textTheme.titleMedium,),
-
+    
             Spacer(),
-
+    
             ///
             ///PLAYLIST
             ///
@@ -36,7 +36,7 @@ class CustomhomePageAppbar extends StatelessWidget
               },
               icon: AppIcon.playlistIcon,
             ),
-
+    
             ///
             /// SETTING
             ///
@@ -56,5 +56,5 @@ class CustomhomePageAppbar extends StatelessWidget
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(60);
+  Size get preferredSize => Size.fromHeight(80);
 }

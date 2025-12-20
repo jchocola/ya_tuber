@@ -15,7 +15,7 @@ class PlaylistPageAppbar extends StatelessWidget
     final theme = Theme.of(context);
     return Neumorphic(
       child: Padding(
-        padding: EdgeInsets.all(AppConstant.appPadding),
+        padding: EdgeInsets.only(left:  AppConstant.appPadding ,right:  AppConstant.appPadding, top: AppConstant.appPadding*2, bottom: AppConstant.appPadding),
         child: Row(
           children: [
             CustomCircleButton(
