@@ -1,3 +1,4 @@
+import 'package:ya_tuber/core/app_exception.dart';
 import 'package:ya_tuber/domain/repo/youtube_explode_repo.dart';
 import 'package:ya_tuber/main.dart';
 import 'package:youtube_explode_dart/youtube_explode_dart.dart';
@@ -73,7 +74,7 @@ class YoutubeExplodeImpl implements YoutubeExplodeRepo {
     try {
       final res = YoutubePlayer.convertUrlToId(videoUrl);
       if (res == null) {
-        throw Exception('Failed to get video ID via Url');
+        throw APP_EXCEPTION.INVALID_URL;
       }
 
       logger.i(res);

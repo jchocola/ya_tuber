@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:ya_tuber/core/app_constant.dart';
 import 'package:ya_tuber/core/app_icon.dart';
+import 'package:ya_tuber/generated/l10n.dart';
 import 'package:ya_tuber/presentation/playlist_page/playlist_page.dart';
 import 'package:ya_tuber/presentation/setting_page/setting_page.dart';
 import 'package:ya_tuber/widget/custom_circle_button.dart';
@@ -16,13 +17,13 @@ class CustomhomePageAppbar extends StatelessWidget
     final theme = Theme.of(context);
     return Neumorphic(
       child: Padding(
-        padding: EdgeInsets.all(AppConstant.appPadding),
+        padding: EdgeInsets.only(left:  AppConstant.appPadding ,right:  AppConstant.appPadding, top: AppConstant.appPadding*2, bottom: AppConstant.appPadding),
         child: Row(
           children: [
-            Text('YaTube', style: theme.textTheme.titleMedium,),
-
+            Text(S.of(context).yatube, style: theme.textTheme.titleMedium,),
+    
             Spacer(),
-
+    
             ///
             ///PLAYLIST
             ///
@@ -35,7 +36,7 @@ class CustomhomePageAppbar extends StatelessWidget
               },
               icon: AppIcon.playlistIcon,
             ),
-
+    
             ///
             /// SETTING
             ///
@@ -55,5 +56,5 @@ class CustomhomePageAppbar extends StatelessWidget
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(60);
+  Size get preferredSize => Size.fromHeight(AppConstant.appBarHeight);
 }

@@ -1,15 +1,27 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:ya_tuber/core/app_exception.dart';
+import 'package:ya_tuber/core/utils/smart_videoId_selector.dart';
 import 'package:ya_tuber/domain/entity/track_entity.dart';
+import 'package:ya_tuber/domain/repo/app_setting_repo.dart';
+import 'package:ya_tuber/domain/repo/local_store_repo.dart';
 import 'package:ya_tuber/domain/repo/youtube_explode_repo.dart';
 import 'package:ya_tuber/main.dart';
 import 'package:youtube_explode_dart/youtube_explode_dart.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart'
-    show YoutubePlayerController, YoutubePlayerParams;
+    show PlayerState, YoutubePlayerController, YoutubePlayerParams;
 
 class HomePageProvider extends ChangeNotifier {
   final YoutubeExplodeRepo youtubeExplodeRepo;
+  final AppSettingRepo settingRepo;
+  final LocalStoreRepo localStoreRepo;
 
-  HomePageProvider({required this.youtubeExplodeRepo});
+  HomePageProvider({
+    required this.youtubeExplodeRepo,
+    required this.settingRepo,
+    required this.localStoreRepo,
+  });
 
   //variables
   String? _currentVideoUrl = '';
@@ -29,6 +41,7 @@ class HomePageProvider extends ChangeNotifier {
   List<double>? playBackRateList = [-1, -0.5, 1, 1.5, 2];
   double currentPlayBackRate = 1.0;
   String currentVideoId = '';
+  bool isLoop = false;
 
   YoutubePlayerController? get youtubePlayerController =>
       _youtubePlayerController;
@@ -49,18 +62,18 @@ class HomePageProvider extends ChangeNotifier {
 
       // if current video url is empty
       if (_currentVideoUrl == null || _currentVideoUrl!.isEmpty) {
-        throw Exception('URL EMPTY');
+        throw APP_EXCEPTION.EMPTY_URL;
       }
 
       // get audio Url
-      final res = await youtubeExplodeRepo.getAudioUrl(
-        videoUrl: _currentVideoUrl!,
-      );
+      // final res = await youtubeExplodeRepo.getAudioUrl(
+      //   videoUrl: _currentVideoUrl!,
+      // );
 
-      if (res.isEmpty) {
-        throw Exception('AUDIO URL EMPTY');
-      }
-      _currentVideoAudioUrl = res;
+      // if (res.isEmpty) {
+      //   throw Exception('AUDIO URL EMPTY');
+      // }
+     // _currentVideoAudioUrl = res;
 
       // load video
       await _loadVideo();
@@ -176,12 +189,17 @@ class HomePageProvider extends ChangeNotifier {
   Future<void> playVideoById({required String videoId}) async {
     try {
       _currentVideoUrl = videoId;
-       notifyListeners();
+      notifyListeners();
       await loadVideoInfo();
-
     } catch (e) {
       logger.e(e);
     }
+  }
+
+  Future<void> toogleLoop() async {
+    isLoop = !isLoop;
+    logger.i('isLoop : $isLoop');
+    notifyListeners();
   }
 
   ///
@@ -206,11 +224,41 @@ class HomePageProvider extends ChangeNotifier {
 
       youtubePlayerController!.loadVideoById(videoId: videoId);
 
+      ///
+      /// LOGIC TO KNOW THE CURRENT PLAY TIME
+      ///
       youtubePlayerController!.videoStateStream.listen((data) {
         setCurrentTime(data.position.inSeconds);
         logger.d(data.position);
       });
-      // final res = await youtubeExplodeRepo.getYoutubePlayerController(
+
+      ///
+      /// LOOP VIDEO , AND AUTO PLAY NEXT LOGIC HERE
+      ///
+      Timer.periodic(Duration(seconds: 3), (_) async {
+        if (currentTime >= video!.duration!.inSeconds - 1) {
+          logger.e('End video');
+
+          ///
+          /// if isloop = true, replay
+          ///
+          if (isLoop) {
+            await seekTo(value: 0);
+          } else {
+            // if (auto play next == true) , run next
+            if (await settingRepo.getAutoPlayParameter()) {
+              final playList = await localStoreRepo.getAllTrack();
+
+              final nextVideoUrl = SmartVideoIdSelector(
+                playListIds: playList.map((e) => e.videoId).toList(),
+                isNext: true,
+                currentVideoId: currentVideoId,
+              );
+              await playVideoById(videoId: nextVideoUrl);
+            }
+          }
+        }
+      }); // final res = await youtubeExplodeRepo.getYoutubePlayerController(
       //   videoUrl: _currentVideoUrl!,
       // );
       // _youtubePlayerController = res;

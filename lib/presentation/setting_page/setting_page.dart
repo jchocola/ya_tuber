@@ -17,15 +17,17 @@ class SettingPage extends StatelessWidget {
   Widget buildBody(BuildContext context) {
     return Padding(
       padding: EdgeInsetsGeometry.all(AppConstant.appPadding),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        spacing: AppConstant.appPadding,
-        children: [
-         // AudioQualityWidget(),
-          PlaybackWidget(),
-          AppareanceWidget(),
-          AboutWidget()
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: AppConstant.appPadding,
+          children: [
+           // AudioQualityWidget(),
+            PlaybackWidget(),
+            AppareanceWidget(),
+            AboutWidget()
+          ],
+        ),
       ));
   }
 }

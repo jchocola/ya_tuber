@@ -3,8 +3,10 @@ import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 import 'package:ya_tuber/core/app_constant.dart';
+import 'package:ya_tuber/core/app_exception.dart';
 import 'package:ya_tuber/core/custom_snackbar.dart';
 import 'package:ya_tuber/domain/entity/track_entity.dart';
+import 'package:ya_tuber/generated/l10n.dart';
 import 'package:ya_tuber/presentation/playlist_page/provider/playlist_page_provider.dart';
 import 'package:ya_tuber/widget/big_button.dart';
 import 'package:ya_tuber/widget/custom_input.dart';
@@ -40,6 +42,8 @@ class _EditTrackPageState extends State<EditTrackPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
+    final theme = Theme.of(context);
     return Dialog(
       child: Neumorphic(
         child: Padding(
@@ -50,13 +54,13 @@ class _EditTrackPageState extends State<EditTrackPage> {
               spacing: AppConstant.widgetPadding,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text('Edit Track'),
-                Text('Update the track information below'),
-                Gap(AppConstant.widgetPadding),
-                Text('Track Title'),
-                CustomInput(controller: titleController),
+                Text(S.of(context).editTrack , style: theme.textTheme.titleLarge,),
+                Text(S.of(context).updateTheTrackInformationBelow , style: theme.textTheme.bodySmall,),
+                //Gap(AppConstant.widgetPadding),
+                Text(S.of(context).trackTitle, style: theme.textTheme.bodyMedium,),
+                CustomInput(controller: titleController , ),
 
-                Text('Artist / Channel'),
+                Text(S.of(context).artistChannel, style: theme.textTheme.bodyMedium,),
                 CustomInput(controller: subTitleController),
 
                 Divider(),
@@ -70,7 +74,7 @@ class _EditTrackPageState extends State<EditTrackPage> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        title: 'Cancel',
+                        title: S.of(context).cancel,
                       ),
                     ),
                     Expanded(
@@ -80,7 +84,7 @@ class _EditTrackPageState extends State<EditTrackPage> {
                             videoId: widget.track!.videoId,
                             title: titleController.text,
                             subtitle: subTitleController.text,
-                            thumbnail: widget.track!.thumbnail
+                            thumbnail: widget.track!.thumbnail,
                           );
 
                           Navigator.pop(context);
@@ -88,16 +92,18 @@ class _EditTrackPageState extends State<EditTrackPage> {
                               .read<PlaylistPageProvider>()
                               .saveTrack(track: trackWithNewData)
                               .then((_) {
-                                showCustomSnackbar(context, content: 'Edited');
+                                showCustomSnackbar(context, 
+                                type: SNACKBAR_TYPE.SUCCESS,
+                                content: AppExceptionConverter(context, exception: APP_EXCEPTION.TRACK_EDITED));
                               });
                         },
-                        title: 'Confirm',
+                        title: S.of(context).confirm,
                       ),
                     ),
                   ],
                 ),
 
-                Text('Changes will be saved to your local playlist'),
+                Text(S.of(context).changesWillBeSavedToYourLocalPlaylist , style: theme.textTheme.bodySmall,),
               ],
             ),
           ),

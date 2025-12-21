@@ -21,5 +21,70 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "about": MessageLookupByLibrary.simpleMessage("About"),
+    "appVersion": MessageLookupByLibrary.simpleMessage("App Version"),
+    "appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
+    "artistChannel": MessageLookupByLibrary.simpleMessage("Artist / Channel"),
+    "autoPlayNext": MessageLookupByLibrary.simpleMessage("Auto Play Next"),
+    "automaticallyPlayNextTrackInPlaylist":
+        MessageLookupByLibrary.simpleMessage(
+          "Automatically play next track in playlist",
+        ),
+    "automaticallyPlayOnBackground": MessageLookupByLibrary.simpleMessage(
+      "Automatically play on background",
+    ),
+    "backgroundPlay": MessageLookupByLibrary.simpleMessage("Background Play"),
+    "build": MessageLookupByLibrary.simpleMessage("Build"),
+    "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "changesWillBeSavedToYourLocalPlaylist":
+        MessageLookupByLibrary.simpleMessage(
+          "Changes will be saved to your local playlist",
+        ),
+    "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+    "deleteTrack": MessageLookupByLibrary.simpleMessage("Delete Track?"),
+    "developer": MessageLookupByLibrary.simpleMessage("Developer"),
+    "editTrack": MessageLookupByLibrary.simpleMessage("Edit Track"),
+    "empty": MessageLookupByLibrary.simpleMessage("Empty"),
+    "invalidUrlPleaseCheckAgain": MessageLookupByLibrary.simpleMessage(
+      "Invalid URL, please check again!",
+    ),
+    "language": MessageLookupByLibrary.simpleMessage("Language"),
+    "notSelectedVideo": MessageLookupByLibrary.simpleMessage(
+      "Not selected video!",
+    ),
+    "pastYoutubeLink": MessageLookupByLibrary.simpleMessage(
+      "Past Youtube link...",
+    ),
+    "playback": MessageLookupByLibrary.simpleMessage("Playback"),
+    "playlist": MessageLookupByLibrary.simpleMessage("Playlist"),
+    "pleaseLongTapToSetValue": MessageLookupByLibrary.simpleMessage(
+      "Please long tap to set value!",
+    ),
+    "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
+    "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+    "termOfServices": MessageLookupByLibrary.simpleMessage("Term of Services"),
+    "theme": MessageLookupByLibrary.simpleMessage("Theme"),
+    "thisActionCannotBeUndoneTheTrackWillBePermanently":
+        MessageLookupByLibrary.simpleMessage(
+          "This action cannot be undone. The track will be permanently removed from your playlist.",
+        ),
+    "trackAddedToPlaylist": MessageLookupByLibrary.simpleMessage(
+      "Track added to playlist!",
+    ),
+    "trackDeletedFromPlaylist": MessageLookupByLibrary.simpleMessage(
+      "Track deleted from playlist!",
+    ),
+    "trackEdited": MessageLookupByLibrary.simpleMessage("Track edited!"),
+    "trackTitle": MessageLookupByLibrary.simpleMessage("Track Title"),
+    "updateTheTrackInformationBelow": MessageLookupByLibrary.simpleMessage(
+      "Update the track information below",
+    ),
+    "urlIsEmpty": MessageLookupByLibrary.simpleMessage("URL is empty!"),
+    "welcomeBackGladToSeeYou": MessageLookupByLibrary.simpleMessage(
+      "Welcome back, glad to see you :)",
+    ),
+    "yatube": MessageLookupByLibrary.simpleMessage("YaTube"),
+    "youreOffline": MessageLookupByLibrary.simpleMessage("You\'re offline :("),
+  };
 }
