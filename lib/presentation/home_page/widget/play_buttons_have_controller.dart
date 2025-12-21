@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:provider/provider.dart';
 import 'package:ya_tuber/core/app_constant.dart';
+import 'package:ya_tuber/core/app_exception.dart';
 import 'package:ya_tuber/core/app_icon.dart';
 import 'package:ya_tuber/core/custom_snackbar.dart';
 import 'package:ya_tuber/core/utils/convert_sec_to_correct_format.dart';
 import 'package:ya_tuber/core/utils/smart_videoId_selector.dart';
 import 'package:ya_tuber/domain/entity/track_entity.dart';
+import 'package:ya_tuber/generated/l10n.dart';
 import 'package:ya_tuber/main.dart';
 import 'package:ya_tuber/presentation/home_page/provider/home_page_provider.dart';
 import 'package:ya_tuber/presentation/home_page/widget/playlist_widget.dart';
@@ -28,6 +30,7 @@ class PlayButtons_when_have_controller extends StatelessWidget {
 
     final playlistProvider_listen = context.watch<PlaylistPageProvider>();
     final playlistProvider_read = context.read<PlaylistPageProvider>();
+    final theme = Theme.of(context);
     return YoutubePlayerControllerProvider(
       controller: homePageProvider_listen.youtubePlayerController!,
       child: Builder(
@@ -38,8 +41,8 @@ class PlayButtons_when_have_controller extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 CustomCircleButton(
-                  onPressed: () async{
-                     try {
+                  onPressed: () async {
+                    try {
                       final nextVideoUrl = SmartVideoIdSelector(
                         playListIds: playlistProvider_read.listTracks
                             .map((e) => e.videoId)
@@ -155,7 +158,13 @@ class PlayButtons_when_have_controller extends StatelessWidget {
                       : AppIcon.volumeOn2,
                 ),
 
-                CustomCircleButton(onPressed: () {}, icon: AppIcon.repeatIcon),
+                CustomCircleButton(
+                  isNegative: homePageProvider_listen.isLoop,
+                  onPressed: () async {
+                    await homePageProvider_read.toogleLoop();
+                  },
+                  icon: AppIcon.repeatIcon,
+                ),
 
                 /// Play back rate
                 //TODO: PLAYBACK LOGIC
@@ -175,7 +184,7 @@ class PlayButtons_when_have_controller extends StatelessWidget {
                         isDefaultAction:
                             value ==
                             homePageProvider_listen.currentPlayBackRate,
-                        child: Text('$value'),
+                        child: Text('$value', style: value ==  homePageProvider_listen.currentPlayBackRate ? theme.textTheme.titleMedium : theme.textTheme.bodyMedium),
                       );
                     },
                   ),
@@ -183,7 +192,7 @@ class PlayButtons_when_have_controller extends StatelessWidget {
                     onPressed: () {
                       showCustomSnackbar(
                         context,
-                        content: 'Please long tap to set value',
+                        content: S.of(context).pleaseLongTapToSetValue,
                       );
                     },
                     icon: AppIcon.speedIcon,
@@ -193,7 +202,7 @@ class PlayButtons_when_have_controller extends StatelessWidget {
                 CustomCircleButton(
                   onPressed: () async {
                     if (homePageProvider_read.video == null) {
-                      showCustomSnackbar(context, content: 'Erorrrrrrrr');
+                      showCustomSnackbar(context, content: AppExceptionConverter(context, exception: APP_EXCEPTION.NOT_CURRENT_VIDEO));
                       return;
                     }
 
@@ -202,7 +211,12 @@ class PlayButtons_when_have_controller extends StatelessWidget {
                       videoId: homePageProvider_read.currentVideoId,
                       title: homePageProvider_read.video?.title ?? '',
                       subtitle: homePageProvider_read.video?.author ?? '',
-                      thumbnail: homePageProvider_read.video?.thumbnails.mediumResUrl ?? ''
+                      thumbnail:
+                          homePageProvider_read
+                              .video
+                              ?.thumbnails
+                              .mediumResUrl ??
+                          '',
                     );
                     logger.f(track.toString());
 
@@ -223,7 +237,8 @@ class PlayButtons_when_have_controller extends StatelessWidget {
                       ) {
                         showCustomSnackbar(
                           context,
-                          content: 'Added to playlist',
+                          type: SNACKBAR_TYPE.SUCCESS,
+                          content: AppExceptionConverter(context, exception: APP_EXCEPTION.TRACK_ADDED ,),
                         );
                       });
                     }

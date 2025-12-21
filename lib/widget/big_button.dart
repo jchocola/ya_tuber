@@ -3,14 +3,20 @@ import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:ya_tuber/core/app_constant.dart';
 
 class BigButton extends StatelessWidget {
-  const BigButton({super.key, this.isNegative = false, this.title = 'Title', this.onPressed});
+  const BigButton({
+    super.key,
+    this.isNegative = false,
+    this.title = 'Title',
+    this.onPressed,
+  });
   final bool isNegative;
   final String title;
   final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return NeumorphicButton(
-      onPressed:onPressed ,
+      onPressed: onPressed,
       style: NeumorphicStyle(
         depth: isNegative
             ? AppConstant.neumoDepthNegative
@@ -18,8 +24,11 @@ class BigButton extends StatelessWidget {
       ),
       child: Container(
         width: double.infinity,
-        padding: EdgeInsets.symmetric(horizontal:  AppConstant.widgetPadding , vertical: AppConstant.widgetPadding/2),
-        child: Text(title),
+        padding: EdgeInsets.symmetric(
+          horizontal: AppConstant.widgetPadding,
+          vertical: AppConstant.widgetPadding / 2,
+        ),
+        child: Text(title, style: theme.textTheme.bodySmall, maxLines: 2,),
       ),
     );
   }

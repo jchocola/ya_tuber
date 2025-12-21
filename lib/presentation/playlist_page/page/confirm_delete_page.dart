@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:provider/provider.dart';
 import 'package:ya_tuber/core/app_constant.dart';
+import 'package:ya_tuber/core/app_exception.dart';
 import 'package:ya_tuber/core/custom_snackbar.dart';
 import 'package:ya_tuber/domain/entity/track_entity.dart';
+import 'package:ya_tuber/generated/l10n.dart';
 import 'package:ya_tuber/presentation/playlist_page/provider/playlist_page_provider.dart';
 import 'package:ya_tuber/widget/big_button.dart';
 import 'package:ya_tuber/widget/play_list_card.dart';
@@ -15,6 +17,7 @@ class ConfirmDeletePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final playlistPageProvider_read = context.read<PlaylistPageProvider>();
+     final theme = Theme.of(context);
     return Dialog(
       child: Neumorphic(
         child: Padding(
@@ -22,10 +25,12 @@ class ConfirmDeletePage extends StatelessWidget {
           child: Column(
             spacing: AppConstant.widgetPadding,
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Delete Track?'),
+              Text(S.of(context).deleteTrack , style: theme.textTheme.titleLarge,),
               Text(
-                'This action cannot be undone. The track will be permanently removed from your playlist.',
+                S.of(context).thisActionCannotBeUndoneTheTrackWillBePermanently,
+                style:  theme.textTheme.bodySmall,
               ),
               PlayListCard(isPlaying: true, track: track),
 
@@ -38,7 +43,7 @@ class ConfirmDeletePage extends StatelessWidget {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      title: 'Cancel',
+                      title: S.of(context).cancel,
                     ),
                   ),
                   Expanded(
@@ -48,10 +53,10 @@ class ConfirmDeletePage extends StatelessWidget {
                         await playlistPageProvider_read
                             .deleteTrack(track: track!)
                             .then((value) {
-                              showCustomSnackbar(context, type: SNACKBAR_TYPE.SUCCESS, content: 'Track deleted');
+                              showCustomSnackbar(context, type: SNACKBAR_TYPE.SUCCESS, content: AppExceptionConverter(context, exception: APP_EXCEPTION.TRACK_DELETED));
                             });
                       },
-                      title: 'Confirm',
+                      title: S.of(context).confirm,
                     ),
                   ),
                 ],

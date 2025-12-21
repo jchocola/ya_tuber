@@ -13,7 +13,7 @@ class InfoWidget extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     final homePageProvider_listen = context.watch<HomePageProvider>();
-
+    final theme = Theme.of(context);
     return Neumorphic(
       child: Padding(
         padding: EdgeInsetsGeometry.all(AppConstant.widgetPadding),
@@ -30,8 +30,8 @@ class InfoWidget extends StatelessWidget {
               children: [
                 Center(child: YoutubePlayerWidget()),
 
-                Text(homePageProvider_listen.video?.title ?? '', maxLines: 2),
-                Text(homePageProvider_listen.video?.author ?? ''),
+                Text(homePageProvider_listen.video?.title ?? '', maxLines: 2, style: theme.textTheme.bodyMedium,),
+                Text(homePageProvider_listen.video?.author ?? '' ,style: theme.textTheme.bodySmall ),
               ],
             ),
 
