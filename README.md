@@ -16,18 +16,10 @@ Screenshots
 -----------
 Place screenshots into `assets/screenshots/` (see the instructions below). Example screenshot references:
 
-- Home / Player view:
 
-	![Home player](flutter_01.png)
-
-- Playlist view:
-
-	![Playlist](flutter_02.png)
-
-- Settings / Theme:
-
-	![Settings](flutter_03.png)
-
+| Home | Playlist | Settings |
+|---:|:---:|:---|
+| ![Home](flutter_01.png) | ![Playlist](flutter_02.png) | ![Settings](flutter_03.png) |
 
 Quick Start
 -----------
